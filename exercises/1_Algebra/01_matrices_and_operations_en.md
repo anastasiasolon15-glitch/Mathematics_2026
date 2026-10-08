@@ -41,6 +41,47 @@ $$
 
 > **Why this exercise:** builds basic fluency with matrix notation, indices, rows, and columns.
 
+### Solution to Exercise 1
+
+A matrix of size $m \times n$ has $m$ rows and $n$ columns.
+
+- $A$ has 2 rows and 3 columns, so
+  $$
+  A \in \mathbb{R}^{2\times 3}.
+  $$
+- $B$ has 3 rows and 2 columns, so
+  $$
+  B \in \mathbb{R}^{3\times 2}.
+  $$
+
+The entry $a_{ij}$ means the element in row $i$, column $j$.
+
+$$
+ a_{12}=-1,\qquad a_{23}=5,
+$$
+
+$$
+ b_{21}=-2,\qquad b_{32}=1.
+$$
+
+The second row of $A$ is
+
+$$
+\begin{pmatrix}
+0 & 4 & 5
+\end{pmatrix},
+$$
+
+and the first column of $B$ is
+
+$$
+\begin{pmatrix}
+1 \\ -2 \\ 4
+\end{pmatrix}.
+$$
+
+This exercise uses the key idea that row and column indices identify entries, and a row or column can be written as a vector.
+
 ### Exercise 2. Addition and Scalar Multiplication
 For
 
@@ -65,6 +106,85 @@ $$
 Explain why matrix addition is possible only for matrices of the same size.
 
 > **Why this exercise:** reinforces entry-by-entry operations and the importance of compatible dimensions.
+
+### Solution to Exercise 2
+
+For matrix addition and subtraction, corresponding entries are combined term by term. This is only possible when the matrices have the same size.
+
+Given
+
+$$
+A=
+\begin{pmatrix}
+1 & 2 \\
+-1 & 3
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+4 & -2 \\
+0 & 5
+\end{pmatrix}.
+$$
+
+Then
+
+$$
+A+B=
+\begin{pmatrix}
+1+4 & 2+(-2) \\
+-1+0 & 3+5
+\end{pmatrix}
+=
+\begin{pmatrix}
+5 & 0 \\
+-1 & 8
+\end{pmatrix}.
+$$
+
+$$
+A-B=
+\begin{pmatrix}
+1-4 & 2-(-2) \\
+-1-0 & 3-5
+\end{pmatrix}
+=
+\begin{pmatrix}
+-3 & 4 \\
+-1 & -2
+\end{pmatrix}.
+$$
+
+$$
+3A-2B
+=3
+\begin{pmatrix}
+1 & 2 \\
+-1 & 3
+\end{pmatrix}
+-2
+\begin{pmatrix}
+4 & -2 \\
+0 & 5
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 & 6 \\
+-3 & 9
+\end{pmatrix}
+-
+\begin{pmatrix}
+8 & -4 \\
+0 & 10
+\end{pmatrix}
+=
+\begin{pmatrix}
+-5 & 10 \\
+-3 & -1
+\end{pmatrix}.
+$$
+
+Matrix addition is defined only for matrices of the same size because each entry is added to the corresponding entry in the other matrix. If the dimensions differ, there is no matching entry for some positions.
 
 ### Exercise 3. When Can Matrices Be Multiplied?
 The matrix sizes are
