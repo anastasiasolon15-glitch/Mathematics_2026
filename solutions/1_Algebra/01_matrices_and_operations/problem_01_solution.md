@@ -23,7 +23,7 @@ $$
 First column of $B$:
 
 $$
-\begin{pmatrix} 1 \\ -2 \\ 4 \end{pmatrix}
+\begin{pmatrix} 1 \cr -2 \cr 4 \end{pmatrix}
 $$
 
 **Answers:** $A$ is $2\times 3$, $B$ is $3\times 2$; $a_{12}=-1$, $a_{23}=5$, $b_{21}=-2$, $b_{32}=1$.
