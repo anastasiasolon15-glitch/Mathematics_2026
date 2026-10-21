@@ -1,49 +1,107 @@
-### Exercise 6. Solution
+# Exercise 6. Transpose
 
-**Rule.** The transpose $X^T$ is obtained by turning rows into columns: the entry in row $i$, column $j$ of $X$ becomes the entry in row $j$, column $i$ of $X^T$. If $X$ is $m\times n$, then $X^T$ is $n\times m$.
+## Question
 
-**1. Transposes**
-
-$$
-A^T=\begin{pmatrix} 1 & 4 \cr 2 & 5 \cr 3 & 6 \end{pmatrix},\qquad B^T=\begin{pmatrix} 1 & 2 & -1 \cr 0 & 1 & 3 \end{pmatrix}
-$$
-
-Sizes: $A$ is $2\times3$, so $A^T$ is $3\times2$; $B$ is $3\times2$, so $B^T$ is $2\times3$.
-
-**2. Product $AB$**
-
-$A$ is $2\times3$ and $B$ is $3\times2$, so $AB$ is defined and has size $2\times2$.
+For
 
 $$
-AB=\begin{pmatrix} 1 & 2 & 3 \cr 4 & 5 & 6 \end{pmatrix}\begin{pmatrix} 1 & 0 \cr 2 & 1 \cr -1 & 3 \end{pmatrix}=\begin{pmatrix} 1\cdot1+2\cdot2+3\cdot(-1) & 1\cdot0+2\cdot1+3\cdot3 \cr 4\cdot1+5\cdot2+6\cdot(-1) & 4\cdot0+5\cdot1+6\cdot3 \end{pmatrix}=\begin{pmatrix} 2 & 11 \cr 8 & 23 \end{pmatrix}
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+\end{pmatrix},\qquad B=
+\begin{pmatrix}
+1 & 0 \\
+2 & 1 \\
+-1 & 3 \\
+\end{pmatrix}
 $$
 
-**3. Left side: $(AB)^T$**
+compute $A^T$, $B^T$, and $AB$. Then verify in this example that
 
 $$
-(AB)^T=\begin{pmatrix} 2 & 11 \cr 8 & 23 \end{pmatrix}^T=\begin{pmatrix} 2 & 8 \cr 11 & 23 \end{pmatrix}
+(AB)^T=B^TA^T.
 $$
 
-**4. Right side: $B^TA^T$**
+## Solution
 
-$B^T$ is $2\times3$ and $A^T$ is $3\times2$, so the product is defined and has size $2\times2$.
+### Steps
 
-$$
-B^TA^T=\begin{pmatrix} 1 & 2 & -1 \cr 0 & 1 & 3 \end{pmatrix}\begin{pmatrix} 1 & 4 \cr 2 & 5 \cr 3 & 6 \end{pmatrix}=\begin{pmatrix} 1\cdot1+2\cdot2+(-1)\cdot3 & 1\cdot4+2\cdot5+(-1)\cdot6 \cr 0\cdot1+1\cdot2+3\cdot3 & 0\cdot4+1\cdot5+3\cdot6 \end{pmatrix}=\begin{pmatrix} 2 & 8 \cr 11 & 23 \end{pmatrix}
-$$
-
-**5. Conclusion**
-
-Both sides are equal, so the property is verified in this example:
+The transpose swaps rows and columns: $(A^T)_{ij} = a_{ji}$.
 
 $$
-(AB)^T=B^TA^T=\begin{pmatrix} 2 & 8 \cr 11 & 23 \end{pmatrix}
+A^T=
+\begin{pmatrix}
+1 & 4 \\
+2 & 5 \\
+3 & 6 \\
+\end{pmatrix},\qquad
+B^T=
+\begin{pmatrix}
+1 & 2 & -1 \\
+0 & 1 & 3 \\
+\end{pmatrix}
 $$
 
-Note that the order of the factors reverses. Writing $A^TB^T$ instead would give a $3\times3$ matrix, which cannot equal the $2\times2$ matrix $(AB)^T$.
-
-**Answers:**
+The product $AB$ has size $2\times2$:
 
 $$
-A^T=\begin{pmatrix} 1 & 4 \cr 2 & 5 \cr 3 & 6 \end{pmatrix},\quad B^T=\begin{pmatrix} 1 & 2 & -1 \cr 0 & 1 & 3 \end{pmatrix},\quad AB=\begin{pmatrix} 2 & 11 \cr 8 & 23 \end{pmatrix}
+\begin{aligned}
+AB &=
+\begin{pmatrix}
+1+4-3 & 0+2+9 \\
+4+10-6 & 0+5+18 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+2 & 11 \\
+8 & 23 \\
+\end{pmatrix}
+\end{aligned}
 $$
+
+Left side of the identity:
+
+$$
+(AB)^T=
+\begin{pmatrix}
+2 & 8 \\
+11 & 23 \\
+\end{pmatrix}
+$$
+
+Right side of the identity:
+
+$$
+\begin{aligned}
+B^TA^T &=
+\begin{pmatrix}
+1+4-3 & 4+10-6 \\
+0+2+9 & 0+5+18 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+2 & 8 \\
+11 & 23 \\
+\end{pmatrix}
+\end{aligned}
+$$
+
+### Result
+
+$(AB)^T=B^TA^T$ holds in this example, with both sides equal to
+
+$$
+\begin{pmatrix}
+2 & 8 \\
+11 & 23 \\
+\end{pmatrix}.
+$$
+
+### Method
+
+The identity $(AB)^T=B^TA^T$ reverses the order of factors. The entry $(i,j)$ of $(AB)^T$ is the dot product of row $j$ of $A$ with column $i$ of $B$. This equals the dot product of row $i$ of $B^T$ with column $j$ of $A^T$, which is the entry $(i,j)$ of $B^TA^T$.
+
+### Verification
+
+The sizes are consistent: $B^T$ is $2\times3$ and $A^T$ is $3\times2$, so $B^TA^T$ is $2\times2$, the size of $(AB)^T$. The other order $A^TB^T$ is also defined, but it has size $3\times3$, which differs from the size of $(AB)^T$, so only the reversed order can match.
