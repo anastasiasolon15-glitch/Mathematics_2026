@@ -1,56 +1,145 @@
-### Exercise 9. Solution
+# Exercise 9. Composing Transformations
 
-**Important:** in $RSx$ the vector $x$ is acted on first by $S$, and then by $R$. The matrix closest to $x$ acts first.
+## Question
 
-**1. Compute $RSx$ (first scale, then rotate)**
-
-$$
-Sx=\begin{pmatrix} 2 & 0 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} 1 \cr 2 \end{pmatrix}=\begin{pmatrix} 2 \cr 2 \end{pmatrix}
-$$
+Let
 
 $$
-R(Sx)=\begin{pmatrix} 0 & -1 \cr 1 & 0 \end{pmatrix}\begin{pmatrix} 2 \cr 2 \end{pmatrix}=\begin{pmatrix} 0\cdot2+(-1)\cdot2 \cr 1\cdot2+0\cdot2 \end{pmatrix}=\begin{pmatrix} -2 \cr 2 \end{pmatrix}
+S=
+\begin{pmatrix}
+2 & 0 \\
+0 & 1 \\
+\end{pmatrix},\qquad R=
+\begin{pmatrix}
+0 & -1 \\
+1 & 0 \\
+\end{pmatrix}.
 $$
 
-**2. Compute $SRx$ (first rotate, then scale)**
+The matrix $S$ describes nonuniform scaling, while $R$ describes a $90^\circ$ counterclockwise rotation.
+For
 
 $$
-Rx=\begin{pmatrix} 0 & -1 \cr 1 & 0 \end{pmatrix}\begin{pmatrix} 1 \cr 2 \end{pmatrix}=\begin{pmatrix} -2 \cr 1 \end{pmatrix}
+x=
+\begin{pmatrix}
+1 \\
+2 \\
+\end{pmatrix}
+$$
+
+compute $RSx$ and $SRx$. Compare the results and explain geometrically why the order of these transformations matters.
+
+## Solution
+
+### Steps
+
+In $RSx=R(Sx)$ the matrix $S$ acts first. In $SRx=S(Rx)$ the matrix $R$ acts first.
+
+$$
+\begin{aligned}
+Sx &=
+\begin{pmatrix}
+2 \\
+2 \\
+\end{pmatrix} \\
+RSx &= R
+\begin{pmatrix}
+2 \\
+2 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+-2 \\
+2 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
 $$
-S(Rx)=\begin{pmatrix} 2 & 0 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} -2 \cr 1 \end{pmatrix}=\begin{pmatrix} -4 \cr 1 \end{pmatrix}
+\begin{aligned}
+Rx &=
+\begin{pmatrix}
+-2 \\
+1 \\
+\end{pmatrix} \\
+SRx &= S
+\begin{pmatrix}
+-2 \\
+1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+-4 \\
+1 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
-**3. Check via the product matrices**
+### Result
 
 $$
-RS=\begin{pmatrix} 0 & -1 \cr 2 & 0 \end{pmatrix},\qquad SR=\begin{pmatrix} 0 & -2 \cr 1 & 0 \end{pmatrix}
+RSx=
+\begin{pmatrix}
+-2 \\
+2 \\
+\end{pmatrix},\qquad
+SRx=
+\begin{pmatrix}
+-4 \\
+1 \\
+\end{pmatrix},\qquad
+RSx\neq SRx.
+$$
+
+### Method
+
+Geometrically, $S$ stretches the plane by a factor of 2 along the $x$-axis only. In $RSx$ the stretch is applied first, along the original horizontal direction, and the rotation then turns the stretched picture by $90^\circ$. In $SRx$ the rotation is applied first, and the stretch then acts along the horizontal direction of the rotated picture. Since the stretching direction is fixed in the plane while the rotation moves the vector relative to it, different parts of the vector get stretched, and the final vectors differ. Equivalently, the products of the matrices differ:
+
+$$
+RS=
+\begin{pmatrix}
+0 & -1 \\
+2 & 0 \\
+\end{pmatrix},\qquad
+SR=
+\begin{pmatrix}
+0 & -2 \\
+1 & 0 \\
+\end{pmatrix}.
+$$
+
+### Verification
+
+Applying the product matrices directly to $x$:
+
+$$
+\begin{aligned}
+RSx &=
+\begin{pmatrix}
+0\cdot1-1\cdot2 \\
+2\cdot1+0\cdot2 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+-2 \\
+2 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
 $$
-RSx=\begin{pmatrix} 0 & -1 \cr 2 & 0 \end{pmatrix}\begin{pmatrix} 1 \cr 2 \end{pmatrix}=\begin{pmatrix} -2 \cr 2 \end{pmatrix},\qquad SRx=\begin{pmatrix} 0 & -2 \cr 1 & 0 \end{pmatrix}\begin{pmatrix} 1 \cr 2 \end{pmatrix}=\begin{pmatrix} -4 \cr 1 \end{pmatrix}
+\begin{aligned}
+SRx &=
+\begin{pmatrix}
+0\cdot1-2\cdot2 \\
+1\cdot1+0\cdot2 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+-4 \\
+1 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
-**4. Comparison**
-
-$$
-RSx=\begin{pmatrix} -2 \cr 2 \end{pmatrix}\neq\begin{pmatrix} -4 \cr 1 \end{pmatrix}=SRx
-$$
-
-The results are different, so $RS\neq SR$. The lengths differ too: $|RSx|=\sqrt{8}$, while $|SRx|=\sqrt{17}$.
-
-**5. Geometric explanation**
-
-The scaling $S$ stretches the plane only in the horizontal direction (the $x$-axis) by a factor of $2$ and leaves the vertical direction unchanged. The rotation $R$ turns every vector by $90^\circ$ counterclockwise, so it changes which direction is "horizontal".
-
-- $RSx$: first we stretch the original vector horizontally, $(1,2)\to(2,2)$, and then rotate it. The stretched part (horizontal) becomes vertical after the rotation, so the result is $(-2,2)$.
-- $SRx$: first we rotate, $(1,2)\to(-2,1)$, and then stretch. Now the horizontal part of the rotated vector is the one that gets doubled, so the result is $(-4,1)$.
-
-The same stretch is applied to different parts of the vector, because the rotation in between changes the directions. This is why the order of transformations matters, and why matrix multiplication is not commutative.
-
-**Answers:**
-
-$$
-RSx=\begin{pmatrix} -2 \cr 2 \end{pmatrix},\qquad SRx=\begin{pmatrix} -4 \cr 1 \end{pmatrix},\qquad RSx\neq SRx
-$$
+This agrees with the step-by-step computation.
