@@ -1,53 +1,97 @@
-### Exercise 12. Solution
+# Exercise 12. Formula for a Matrix Power
 
-**1. Powers of $A$**
+## Question
 
-$$
-A^2=AA=\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}=\begin{pmatrix} 1\cdot1+1\cdot0 & 1\cdot1+1\cdot1 \cr 0\cdot1+1\cdot0 & 0\cdot1+1\cdot1 \end{pmatrix}=\begin{pmatrix} 1 & 2 \cr 0 & 1 \end{pmatrix}
-$$
+Let
 
 $$
-A^3=A^2A=\begin{pmatrix} 1 & 2 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}=\begin{pmatrix} 1\cdot1+2\cdot0 & 1\cdot1+2\cdot1 \cr 0\cdot1+1\cdot0 & 0\cdot1+1\cdot1 \end{pmatrix}=\begin{pmatrix} 1 & 3 \cr 0 & 1 \end{pmatrix}
+A=
+\begin{pmatrix}
+1 & 1 \\
+0 & 1 \\
+\end{pmatrix}.
 $$
 
-$$
-A^4=A^3A=\begin{pmatrix} 1 & 3 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}=\begin{pmatrix} 1\cdot1+3\cdot0 & 1\cdot1+3\cdot1 \cr 0\cdot1+1\cdot0 & 0\cdot1+1\cdot1 \end{pmatrix}=\begin{pmatrix} 1 & 4 \cr 0 & 1 \end{pmatrix}
-$$
+Compute $A^2$, $A^3$, and $A^4$, and use them to formulate a conjecture for $A^n$. Then do not stop after checking one more case: assume the formula is true for $n$, multiply by $A$, and explain why you obtain exactly the formula for $n+1$.
 
-**2. Pattern and conjecture**
+## Solution
 
-$$
-A^1=\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix},\quad A^2=\begin{pmatrix} 1 & 2 \cr 0 & 1 \end{pmatrix},\quad A^3=\begin{pmatrix} 1 & 3 \cr 0 & 1 \end{pmatrix},\quad A^4=\begin{pmatrix} 1 & 4 \cr 0 & 1 \end{pmatrix}
-$$
-
-The diagonal entries stay $1$, the bottom-left entry stays $0$, and the top-right entry equals the exponent. Conjecture:
+### Steps
 
 $$
-A^n=\begin{pmatrix} 1 & n \cr 0 & 1 \end{pmatrix},\qquad n=1,2,3,\dots
+A^2=AA=
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+\end{pmatrix},\qquad
+A^3=A^2A=
+\begin{pmatrix}
+1 & 3 \\
+0 & 1 \\
+\end{pmatrix},\qquad
+A^4=A^3A=
+\begin{pmatrix}
+1 & 4 \\
+0 & 1 \\
+\end{pmatrix}.
 $$
 
-**3. Proof by induction**
-
-*Base case.* For $n=1$ the formula gives $\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}=A$, which is true.
-
-*Inductive step.* Assume the formula holds for some $n$:
+In each step the upper right entry increases by $1$, so the conjecture is
 
 $$
-A^n=\begin{pmatrix} 1 & n \cr 0 & 1 \end{pmatrix}
+A^n=
+\begin{pmatrix}
+1 & n \\
+0 & 1 \\
+\end{pmatrix},\qquad n\ge1.
 $$
 
-Multiply by $A$:
+Proof by induction.
+
+Base case: for $n=1$ the formula gives $A$, which is correct.
+
+Inductive step: assume the formula holds for some $n$. Then
 
 $$
-A^{n+1}=A^nA=\begin{pmatrix} 1 & n \cr 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}=\begin{pmatrix} 1\cdot1+n\cdot0 & 1\cdot1+n\cdot1 \cr 0\cdot1+1\cdot0 & 0\cdot1+1\cdot1 \end{pmatrix}=\begin{pmatrix} 1 & n+1 \cr 0 & 1 \end{pmatrix}
+\begin{aligned}
+A^{n+1}=A^nA &=
+\begin{pmatrix}
+1 & n \\
+0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 \\
+0 & 1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+1\cdot1+n\cdot0 & 1\cdot1+n\cdot1 \\
+0 & 1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+1 & n+1 \\
+0 & 1 \\
+\end{pmatrix}.
+\end{aligned}
 $$
 
-This is exactly the formula for $n+1$. By induction, the formula holds for every natural $n$.
+### Result
 
-**Why it works.** Multiplying by $A$ on the right adds the first column to the second column. The first column of $A^n$ is $(1,0)^T$, so each multiplication adds $1$ to the top-right entry and changes nothing else.
-
-**Answer:**
+For all $n\ge1$:
 
 $$
-A^n=\begin{pmatrix} 1 & n \cr 0 & 1 \end{pmatrix}
+A^n=
+\begin{pmatrix}
+1 & n \\
+0 & 1 \\
+\end{pmatrix}.
 $$
+
+### Method
+
+The product above is exactly the formula with $n$ replaced by $n+1$. Together with the base case, the induction principle gives the formula for all $n\ge1$. Checking further particular cases would only support the conjecture. The inductive step shows that the pattern cannot break.
+
+### Verification
+
+The formula reproduces the computed matrices for $n=2,3,4$. Multiplying in the other order also works: $AA^n$ has first row $(1,\ 1+n)$ and second row $(0,\ 1)$, which is the same matrix.
