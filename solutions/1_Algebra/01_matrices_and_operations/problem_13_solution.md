@@ -1,70 +1,129 @@
-### Exercise 13. Solution
+# Exercise 13. A Recurrence Written in Matrix Form
 
-Denote the Fibonacci numbers by $F_0=0,\ F_1=1,\ F_2=1,\ F_3=2,\ F_4=3,\ F_5=5,\ F_6=8,\dots$ with the rule $F_{k+1}=F_k+F_{k-1}$. (The matrix is called $\mathbf{F}$ below only when needed; the numbers carry indices.)
+## Question
 
-**1. Powers of the matrix**
-
-$$
-F^2=FF=\begin{pmatrix} 1 & 1 \cr 1 & 0 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 1 & 0 \end{pmatrix}=\begin{pmatrix} 1\cdot1+1\cdot1 & 1\cdot1+1\cdot0 \cr 1\cdot1+0\cdot1 & 1\cdot1+0\cdot0 \end{pmatrix}=\begin{pmatrix} 2 & 1 \cr 1 & 1 \end{pmatrix}
-$$
+Let
 
 $$
-F^3=F^2F=\begin{pmatrix} 2 & 1 \cr 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 1 & 0 \end{pmatrix}=\begin{pmatrix} 2\cdot1+1\cdot1 & 2\cdot1+1\cdot0 \cr 1\cdot1+1\cdot1 & 1\cdot1+1\cdot0 \end{pmatrix}=\begin{pmatrix} 3 & 2 \cr 2 & 1 \end{pmatrix}
+F=
+\begin{pmatrix}
+1 & 1 \\
+1 & 0 \\
+\end{pmatrix}.
 $$
 
-$$
-F^4=F^3F=\begin{pmatrix} 3 & 2 \cr 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 1 & 0 \end{pmatrix}=\begin{pmatrix} 3\cdot1+2\cdot1 & 3\cdot1+2\cdot0 \cr 2\cdot1+1\cdot1 & 2\cdot1+1\cdot0 \end{pmatrix}=\begin{pmatrix} 5 & 3 \cr 3 & 2 \end{pmatrix}
-$$
+Compute $F^2$, $F^3$, $F^4$, and $F^5$. Compare the numbers obtained with the sequence
 
 $$
-F^5=F^4F=\begin{pmatrix} 5 & 3 \cr 3 & 2 \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 1 & 0 \end{pmatrix}=\begin{pmatrix} 5\cdot1+3\cdot1 & 5\cdot1+3\cdot0 \cr 3\cdot1+2\cdot1 & 3\cdot1+2\cdot0 \end{pmatrix}=\begin{pmatrix} 8 & 5 \cr 5 & 3 \end{pmatrix}
+0,1,1,2,3,5,8,\ldots
 $$
 
-**2. Relationship with the sequence $0,1,1,2,3,5,8,\ldots$**
+and describe the relationship you observe. Then compute
 
 $$
-F^1=\begin{pmatrix} 1 & 1 \cr 1 & 0 \end{pmatrix}=\begin{pmatrix} F_2 & F_1 \cr F_1 & F_0 \end{pmatrix},\qquad F^2=\begin{pmatrix} 2 & 1 \cr 1 & 1 \end{pmatrix}=\begin{pmatrix} F_3 & F_2 \cr F_2 & F_1 \end{pmatrix}
+F
+\begin{pmatrix}
+a \\
+b \\
+\end{pmatrix}
 $$
 
-$$
-F^3=\begin{pmatrix} F_4 & F_3 \cr F_3 & F_2 \end{pmatrix},\qquad F^4=\begin{pmatrix} F_5 & F_4 \cr F_4 & F_3 \end{pmatrix},\qquad F^5=\begin{pmatrix} F_6 & F_5 \cr F_5 & F_4 \end{pmatrix}
-$$
+and explain how this multiplication performs one recurrence step: it creates the sum of two consecutive terms and keeps one of them for the next step.
 
-All entries of the powers are consecutive Fibonacci numbers. The observed pattern (not proved here) is
+## Solution
 
-$$
-F^n=\begin{pmatrix} F_{n+1} & F_n \cr F_n & F_{n-1} \end{pmatrix}
-$$
+### Steps
 
-**3. One recurrence step**
+Let $f_0=0$, $f_1=1$, $f_2=1$, $f_3=2$, $f_4=3$, $f_5=5$, $f_6=8$ denote the Fibonacci numbers.
 
 $$
-F\begin{pmatrix} a \cr b \end{pmatrix}=\begin{pmatrix} 1 & 1 \cr 1 & 0 \end{pmatrix}\begin{pmatrix} a \cr b \end{pmatrix}=\begin{pmatrix} a+b \cr a \end{pmatrix}
-$$
-
-If the vector contains two consecutive terms, $a=F_{k+1}$ and $b=F_k$, then
-
-$$
-F\begin{pmatrix} F_{k+1} \cr F_k \end{pmatrix}=\begin{pmatrix} F_{k+1}+F_k \cr F_{k+1} \end{pmatrix}=\begin{pmatrix} F_{k+2} \cr F_{k+1} \end{pmatrix}
-$$
-
-- The first row $(1,\ 1)$ creates the sum $a+b$, which is the new term.
-- The second row $(1,\ 0)$ copies $a$, so the newer of the two terms is kept for the next step.
-
-So one multiplication by $F$ moves the pair $(F_{k+1},F_k)$ one step forward to $(F_{k+2},F_{k+1})$. Starting from $\begin{pmatrix} F_1 \cr F_0 \end{pmatrix}=\begin{pmatrix} 1 \cr 0 \end{pmatrix}$ and applying $F$ exactly $n$ times, we get
-
-$$
-F^n\begin{pmatrix} 1 \cr 0 \end{pmatrix}=\begin{pmatrix} F_{n+1} \cr F_n \end{pmatrix}
-$$
-
-which is the first column of $F^n$, as seen above.
-
-**Answers:**
-
-$$
-F^2=\begin{pmatrix} 2 & 1 \cr 1 & 1 \end{pmatrix},\quad F^3=\begin{pmatrix} 3 & 2 \cr 2 & 1 \end{pmatrix},\quad F^4=\begin{pmatrix} 5 & 3 \cr 3 & 2 \end{pmatrix},\quad F^5=\begin{pmatrix} 8 & 5 \cr 5 & 3 \end{pmatrix}
+F^2=
+\begin{pmatrix}
+2 & 1 \\
+1 & 1 \\
+\end{pmatrix},\qquad
+F^3=F^2F=
+\begin{pmatrix}
+3 & 2 \\
+2 & 1 \\
+\end{pmatrix}
 $$
 
 $$
-F\begin{pmatrix} a \cr b \end{pmatrix}=\begin{pmatrix} a+b \cr a \end{pmatrix}
+F^4=F^3F=
+\begin{pmatrix}
+5 & 3 \\
+3 & 2 \\
+\end{pmatrix},\qquad
+F^5=F^4F=
+\begin{pmatrix}
+8 & 5 \\
+5 & 3 \\
+\end{pmatrix}
 $$
+
+The entries of the powers are Fibonacci numbers:
+
+$$
+F^n=
+\begin{pmatrix}
+f_{n+1} & f_n \\
+f_n & f_{n-1} \\
+\end{pmatrix}.
+$$
+
+For $n=5$ this gives $f_6=8$, $f_5=5$, $f_4=3$, which matches $F^5$.
+
+The action of $F$ on a vector:
+
+$$
+\begin{aligned}
+F
+\begin{pmatrix}
+a \\
+b \\
+\end{pmatrix} &=
+\begin{pmatrix}
+1\cdot a+1\cdot b \\
+1\cdot a+0\cdot b \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+a+b \\
+a \\
+\end{pmatrix}.
+\end{aligned}
+$$
+
+### Result
+
+The powers of $F$ contain consecutive Fibonacci numbers, and multiplication by $F$ maps the pair $(a,b)$ to $(a+b,\ a)$.
+
+### Method
+
+If $(a,b)=(f_{n+1},f_n)$ are two consecutive terms, then
+
+$$
+\begin{aligned}
+F
+\begin{pmatrix}
+f_{n+1} \\
+f_n \\
+\end{pmatrix} &=
+\begin{pmatrix}
+f_{n+1}+f_n \\
+f_{n+1} \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+f_{n+2} \\
+f_{n+1} \\
+\end{pmatrix}.
+\end{aligned}
+$$
+
+The first row of $F$ creates the sum of the two terms, and the second row keeps the larger term $f_{n+1}$ for the next step. Hence $n$ applications of $F$ to $(f_1,f_0)=(1,0)$ give $(f_{n+1},f_n)$, which is the first column of $F^n$.
+
+### Verification
+
+The first column of $F^5$ is $(8,5)=(f_6,f_5)$. The determinant check also works: $\det F=-1$, and $\det F^5=8\cdot3-5\cdot5=-1=(-1)^5$.
