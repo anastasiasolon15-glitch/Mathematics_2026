@@ -1,43 +1,46 @@
-### Exercise 3. Solution
+# Exercise 3. When Can Matrices Be Multiplied?
 
-**Condition.** The product $XY$ is defined only if the number of **columns** of $X$ equals the number of **rows** of $Y$. If $X$ is $m \times n$ and $Y$ is $n \times p$, then $XY$ is defined and has size $m \times p$.
+## Question
 
-Sizes:
+The matrix sizes are
 
 $$
-A_{2\times3},\qquad B_{3\times4},\qquad C_{4\times2},\qquad D_{2\times2}
+A_{2\times3},\qquad B_{3\times4},\qquad C_{4\times2},\qquad D_{2\times2}.
 $$
 
-**Check of each product**
+For the products
 
-| Product | Sizes | Inner numbers | Defined? | Size of result |
+$$
+AB,\ BA,\ BC,\ CB,\ AC,\ CA,\ AD,\ DA
+$$
+
+determine whether they are defined. If so, state the size of the result. Justify each decision using the dimension compatibility condition.
+
+## Solution
+
+### Steps
+
+The product $XY$ of an $m\times n$ matrix $X$ and a $p\times q$ matrix $Y$ is defined if and only if $n=p$ (the number of columns of $X$ equals the number of rows of $Y$). The result then has size $m\times q$.
+
+| Product | Sizes | Condition | Defined | Size of result |
 |---|---|---|---|---|
-| $AB$ | $2\times3$ and $3\times4$ | $3 = 3$ | Yes | $2\times4$ |
-| $BA$ | $3\times4$ and $2\times3$ | $4 \neq 2$ | No | none |
-| $BC$ | $3\times4$ and $4\times2$ | $4 = 4$ | Yes | $3\times2$ |
-| $CB$ | $4\times2$ and $3\times4$ | $2 \neq 3$ | No | none |
-| $AC$ | $2\times3$ and $4\times2$ | $3 \neq 4$ | No | none |
-| $CA$ | $4\times2$ and $2\times3$ | $2 = 2$ | Yes | $4\times3$ |
-| $AD$ | $2\times3$ and $2\times2$ | $3 \neq 2$ | No | none |
-| $DA$ | $2\times2$ and $2\times3$ | $2 = 2$ | Yes | $2\times3$ |
+| $AB$ | $2\times3$, $3\times4$ | $3=3$ | yes | $2\times4$ |
+| $BA$ | $3\times4$, $2\times3$ | $4\neq2$ | no | none |
+| $BC$ | $3\times4$, $4\times2$ | $4=4$ | yes | $3\times2$ |
+| $CB$ | $4\times2$, $3\times4$ | $2\neq3$ | no | none |
+| $AC$ | $2\times3$, $4\times2$ | $3\neq4$ | no | none |
+| $CA$ | $4\times2$, $2\times3$ | $2=2$ | yes | $4\times3$ |
+| $AD$ | $2\times3$, $2\times2$ | $3\neq2$ | no | none |
+| $DA$ | $2\times2$, $2\times3$ | $2=2$ | yes | $2\times3$ |
 
-**Justification**
+### Result
 
-- $AB$: columns of $A$ is $3$, rows of $B$ is $3$, so the product is defined and the result is $2\times4$.
-- $BA$: columns of $B$ is $4$, rows of $A$ is $2$, they differ, so the product is not defined.
-- $BC$: columns of $B$ is $4$, rows of $C$ is $4$, so the product is defined and the result is $3\times2$.
-- $CB$: columns of $C$ is $2$, rows of $B$ is $3$, they differ, so the product is not defined.
-- $AC$: columns of $A$ is $3$, rows of $C$ is $4$, they differ, so the product is not defined.
-- $CA$: columns of $C$ is $2$, rows of $A$ is $2$, so the product is defined and the result is $4\times3$.
-- $AD$: columns of $A$ is $3$, rows of $D$ is $2$, they differ, so the product is not defined.
-- $DA$: columns of $D$ is $2$, rows of $A$ is $2$, so the product is defined and the result is $2\times3$.
+The products $AB$, $BC$, $CA$, $DA$ are defined, with sizes $2\times4$, $3\times2$, $4\times3$, $2\times3$ respectively. The products $BA$, $CB$, $AC$, $AD$ are not defined.
 
-**Answers:** the products $AB$, $BC$, $CA$, $DA$ are defined, with sizes
+### Method
 
-$$
-AB: 2\times4,\qquad BC: 3\times2,\qquad CA: 4\times3,\qquad DA: 2\times3
-$$
+Each entry of $XY$ is a dot product of a row of $X$ with a column of $Y$. A dot product requires vectors of equal length, and the row length of $X$ is its number of columns, while the column length of $Y$ is its number of rows.
 
-The products $BA$, $CB$, $AC$, $AD$ are not defined.
+### Verification
 
-**Remark.** Matrix multiplication is not commutative: $AB$ is defined, but $BA$ is not. The same holds for $AD$ and $DA$.
+The pair $AB$ is defined while $BA$ is not, which shows that the order of factors matters even for the existence of the product. Chains are consistent: $AB$ has size $2\times4$ and $C$ has size $4\times2$, so $(AB)C$ is defined with size $2\times2$. The same size follows from $A(BC)$, where $BC$ is $3\times2$ and $A$ is $2\times3$.
