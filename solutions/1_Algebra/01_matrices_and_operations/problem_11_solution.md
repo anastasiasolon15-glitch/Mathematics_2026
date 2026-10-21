@@ -1,54 +1,107 @@
-### Exercise 11. Solution
+# Exercise 11. When Do Matrices Commute?
 
-**1. Compute $AB$**
+## Question
 
-$$
-AB=\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} a & b \cr c & d \end{pmatrix}=\begin{pmatrix} a+c & b+d \cr c & d \end{pmatrix}
-$$
-
-**2. Compute $BA$**
+Given
 
 $$
-BA=\begin{pmatrix} a & b \cr c & d \end{pmatrix}\begin{pmatrix} 1 & 1 \cr 0 & 1 \end{pmatrix}=\begin{pmatrix} a & a+b \cr c & c+d \end{pmatrix}
+A=
+\begin{pmatrix}
+1 & 1 \\
+0 & 1 \\
+\end{pmatrix},\qquad B=
+\begin{pmatrix}
+a & b \\
+c & d \\
+\end{pmatrix}.
 $$
 
-**3. Condition $AB=BA$**
+Find the conditions on $a,b,c,d$ under which $AB=BA$. Describe the general form of all such matrices $B$.
 
-Two matrices are equal when all their entries are equal, so we compare entry by entry:
+## Solution
 
-- top-left: $a+c=a$, so $c=0$;
-- top-right: $b+d=a+b$, so $d=a$;
-- bottom-left: $c=c$, always true;
-- bottom-right: $d=c+d$, so $c=0$.
+### Steps
 
-The conditions are therefore
+Compute both products:
 
 $$
-c=0,\qquad d=a,
+AB=
+\begin{pmatrix}
+a+c & b+d \\
+c & d \\
+\end{pmatrix},\qquad
+BA=
+\begin{pmatrix}
+a & a+b \\
+c & c+d \\
+\end{pmatrix}.
 $$
 
-and $a$ and $b$ can be any numbers.
-
-**4. General form of $B$**
+The equality $AB=BA$ means that all four entries agree:
 
 $$
-B=\begin{pmatrix} a & b \cr 0 & a \end{pmatrix}=a\begin{pmatrix} 1 & 0 \cr 0 & 1 \end{pmatrix}+b\begin{pmatrix} 0 & 1 \cr 0 & 0 \end{pmatrix}=aI+bN,\qquad N=A-I
+\begin{cases}
+a+c=a, \\
+b+d=a+b, \\
+c=c, \\
+d=c+d.
+\end{cases}
 $$
 
-So the matrices that commute with $A$ are exactly the matrices of the form $aI+bA'$, where $A'$ is any combination of $I$ and $A$ (since $N=A-I$, we get $B=(a-b)I+bA$).
+The first and last equations give $c=0$. The second equation gives $d=a$. The third equation holds always.
 
-**5. Check**
+### Result
 
-Take $a=2$, $b=3$, so $B=\begin{pmatrix} 2 & 3 \cr 0 & 2 \end{pmatrix}$. Then
-
-$$
-AB=\begin{pmatrix} 2 & 5 \cr 0 & 2 \end{pmatrix},\qquad BA=\begin{pmatrix} 2 & 5 \cr 0 & 2 \end{pmatrix}
-$$
-
-Both products are equal, as expected.
-
-**Answers:**
+The matrices $A$ and $B$ commute if and only if $c=0$ and $d=a$. All such matrices have the form
 
 $$
-AB=BA\iff c=0\ \text{and}\ d=a,\qquad B=\begin{pmatrix} a & b \cr 0 & a \end{pmatrix}\ (a,b\in\mathbb{R})
+B=
+\begin{pmatrix}
+a & b \\
+0 & a \\
+\end{pmatrix},\qquad a,b\in\mathbb{R}.
 $$
+
+Equivalently, since $A-I$ has a single nonzero entry $1$ in position $(1,2)$,
+
+$$
+B=(a-b)I+bA.
+$$
+
+### Method
+
+The condition $AB=BA$ is a system of linear equations in the unknown entries of $B$. Solving it describes the whole family of matrices commuting with $A$. This family is two-dimensional, with free parameters $a$ and $b$.
+
+### Verification
+
+For $B$ of the found form:
+
+$$
+\begin{aligned}
+AB &=
+\begin{pmatrix}
+a & a+b \\
+0 & a \\
+\end{pmatrix} \\
+&= BA.
+\end{aligned}
+$$
+
+The identity $B=(a-b)I+bA$ is confirmed by expanding:
+
+$$
+\begin{aligned}
+(a-b)I+bA &=
+\begin{pmatrix}
+a-b+b & b \\
+0 & a-b+b \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+a & b \\
+0 & a \\
+\end{pmatrix}.
+\end{aligned}
+$$
+
+Moreover, $I$ and $A$ both commute with $A$, so any combination $(a-b)I+bA$ commutes with $A$, which confirms the result independently.
