@@ -1,33 +1,89 @@
-### Exercise 4. Solution
+# Exercise 4. Matrix Multiplication and Noncommutativity
 
-**Rule.** The entry in row $i$, column $j$ of $XY$ is the row $i$ of $X$ multiplied entry by entry with the column $j$ of $Y$, and the products are added up.
+## Question
 
-**1. Product $AB$**
-
-$$
-AB=\begin{pmatrix} 1 & 2 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} 2 & 0 \cr 3 & 1 \end{pmatrix}=\begin{pmatrix} 1\cdot2+2\cdot3 & 1\cdot0+2\cdot1 \cr 0\cdot2+1\cdot3 & 0\cdot0+1\cdot1 \end{pmatrix}=\begin{pmatrix} 8 & 2 \cr 3 & 1 \end{pmatrix}
-$$
-
-**2. Product $BA$**
+For
 
 $$
-BA=\begin{pmatrix} 2 & 0 \cr 3 & 1 \end{pmatrix}\begin{pmatrix} 1 & 2 \cr 0 & 1 \end{pmatrix}=\begin{pmatrix} 2\cdot1+0\cdot0 & 2\cdot2+0\cdot1 \cr 3\cdot1+1\cdot0 & 3\cdot2+1\cdot1 \end{pmatrix}=\begin{pmatrix} 2 & 4 \cr 3 & 7 \end{pmatrix}
+A=
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+\end{pmatrix},\qquad B=
+\begin{pmatrix}
+2 & 0 \\
+3 & 1 \\
+\end{pmatrix}
 $$
 
-**3. Comparison**
+compute $AB$ and $BA$. Is $AB=BA$? Use this example to explain what noncommutativity of matrix multiplication means.
+
+## Solution
+
+### Steps
+
+Each entry of a product is the dot product of a row of the left factor with a column of the right factor.
 
 $$
-AB=\begin{pmatrix} 8 & 2 \cr 3 & 1 \end{pmatrix}\neq\begin{pmatrix} 2 & 4 \cr 3 & 7 \end{pmatrix}=BA
+\begin{aligned}
+AB &=
+\begin{pmatrix}
+1\cdot2+2\cdot3 & 1\cdot0+2\cdot1 \\
+0\cdot2+1\cdot3 & 0\cdot0+1\cdot1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+8 & 2 \\
+3 & 1 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
-So $AB\neq BA$. Even the entries in the top-left corner differ: $8\neq2$.
+$$
+\begin{aligned}
+BA &=
+\begin{pmatrix}
+2\cdot1+0\cdot0 & 2\cdot2+0\cdot1 \\
+3\cdot1+1\cdot0 & 3\cdot2+1\cdot1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+2 & 4 \\
+3 & 7 \\
+\end{pmatrix}
+\end{aligned}
+$$
 
-**4. What noncommutativity means**
-
-For numbers, $a\cdot b=b\cdot a$ always. For matrices this is false in general: the order of the factors matters, and in this example swapping $A$ and $B$ gives a different matrix. Both products are defined here because the matrices are square and of the same size, so the difference comes from the multiplication itself, not from incompatible dimensions. (In Exercise 3, $AB$ was defined while $BA$ was not, which is an even stronger form of the same effect.)
-
-**Answers:**
+### Result
 
 $$
-AB=\begin{pmatrix} 8 & 2 \cr 3 & 1 \end{pmatrix},\qquad BA=\begin{pmatrix} 2 & 4 \cr 3 & 7 \end{pmatrix},\qquad AB\neq BA
+AB=
+\begin{pmatrix}
+8 & 2 \\
+3 & 1 \\
+\end{pmatrix},\qquad
+BA=
+\begin{pmatrix}
+2 & 4 \\
+3 & 7 \\
+\end{pmatrix},\qquad
+AB\neq BA.
 $$
+
+### Method
+
+Both products are defined and have the same size, yet they differ. Noncommutativity means that in general $AB\neq BA$, so the order of factors cannot be swapped. One counterexample, such as this one, is enough to show that the property fails in general. (For some special pairs of matrices the equality does hold, see Exercise 11.)
+
+### Verification
+
+The entries in position $(1,1)$ already differ: $8\neq2$. The trace and the determinant of the two products agree, as they should for these invariants:
+
+$$
+\mathrm{tr}(AB)=8+1=9=2+7=\mathrm{tr}(BA),
+$$
+
+$$
+\det(AB)=8\cdot1-2\cdot3=2=2\cdot7-4\cdot3=\det(BA).
+$$
+
+Thus $AB$ and $BA$ are different matrices that share these invariants.
