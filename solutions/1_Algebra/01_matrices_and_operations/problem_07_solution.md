@@ -1,64 +1,144 @@
-### Exercise 7. Solution
+# Exercise 7. Identity Matrix, Zero Matrix, and Powers
 
-Here $I$ is the $2\times2$ identity matrix and $0$ is the $2\times2$ zero matrix:
+## Question
 
-$$
-I=\begin{pmatrix} 1 & 0 \cr 0 & 1 \end{pmatrix},\qquad 0=\begin{pmatrix} 0 & 0 \cr 0 & 0 \end{pmatrix}
-$$
-
-**1. Products with $I$**
+For
 
 $$
-AI=\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}\begin{pmatrix} 1 & 0 \cr 0 & 1 \end{pmatrix}=\begin{pmatrix} 2\cdot1+1\cdot0 & 2\cdot0+1\cdot1 \cr 0\cdot1+2\cdot0 & 0\cdot0+2\cdot1 \end{pmatrix}=\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}=A
+A=
+\begin{pmatrix}
+2 & 1 \\
+0 & 2 \\
+\end{pmatrix}
+$$
+
+compute
+
+$$
+AI,\qquad IA,\qquad A+0,\qquad A^2,\qquad A^3.
+$$
+
+Explain the roles of the matrices $I$ and $0$, and describe the pattern you observe in successive powers of $A$.
+
+## Solution
+
+### Steps
+
+Here $I$ is the $2\times2$ identity matrix and $0$ is the $2\times2$ zero matrix.
+
+$$
+\begin{aligned}
+AI &=
+\begin{pmatrix}
+2 & 1 \\
+0 & 2 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+2 & 1 \\
+0 & 2 \\
+\end{pmatrix}
+\end{aligned}
+$$
+
+Similarly $IA=A$ and $A+0=A$.
+
+Powers:
+
+$$
+\begin{aligned}
+A^2 &=
+\begin{pmatrix}
+2\cdot2+1\cdot0 & 2\cdot1+1\cdot2 \\
+0\cdot2+2\cdot0 & 0\cdot1+2\cdot2 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+4 & 4 \\
+0 & 4 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
 $$
-IA=\begin{pmatrix} 1 & 0 \cr 0 & 1 \end{pmatrix}\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}=\begin{pmatrix} 1\cdot2+0\cdot0 & 1\cdot1+0\cdot2 \cr 0\cdot2+1\cdot0 & 0\cdot1+1\cdot2 \end{pmatrix}=\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}=A
+\begin{aligned}
+A^3=A^2A &=
+\begin{pmatrix}
+4\cdot2+4\cdot0 & 4\cdot1+4\cdot2 \\
+0\cdot2+4\cdot0 & 0\cdot1+4\cdot2 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+8 & 12 \\
+0 & 8 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
-**2. Sum with $0$**
+### Result
 
 $$
-A+0=\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}+\begin{pmatrix} 0 & 0 \cr 0 & 0 \end{pmatrix}=\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}=A
+AI=IA=A,\qquad A+0=A,
 $$
 
-**3. Square $A^2$**
-
 $$
-A^2=AA=\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}=\begin{pmatrix} 2\cdot2+1\cdot0 & 2\cdot1+1\cdot2 \cr 0\cdot2+2\cdot0 & 0\cdot1+2\cdot2 \end{pmatrix}=\begin{pmatrix} 4 & 4 \cr 0 & 4 \end{pmatrix}
-$$
-
-**4. Cube $A^3$**
-
-$$
-A^3=A^2A=\begin{pmatrix} 4 & 4 \cr 0 & 4 \end{pmatrix}\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix}=\begin{pmatrix} 4\cdot2+4\cdot0 & 4\cdot1+4\cdot2 \cr 0\cdot2+4\cdot0 & 0\cdot1+4\cdot2 \end{pmatrix}=\begin{pmatrix} 8 & 12 \cr 0 & 8 \end{pmatrix}
-$$
-
-**5. Roles of $I$ and $0$**
-
-- $I$ is the neutral element for multiplication: $AI=IA=A$. It plays the role of the number $1$.
-- $0$ is the neutral element for addition: $A+0=A$. It plays the role of the number $0$.
-
-**6. Pattern in the powers**
-
-$$
-A^1=\begin{pmatrix} 2 & 1 \cr 0 & 2 \end{pmatrix},\qquad A^2=\begin{pmatrix} 4 & 4 \cr 0 & 4 \end{pmatrix},\qquad A^3=\begin{pmatrix} 8 & 12 \cr 0 & 8 \end{pmatrix}
+A^2=
+\begin{pmatrix}
+4 & 4 \\
+0 & 4 \\
+\end{pmatrix},\qquad
+A^3=
+\begin{pmatrix}
+8 & 12 \\
+0 & 8 \\
+\end{pmatrix}.
 $$
 
-- The matrix stays upper triangular (zero in the bottom-left corner).
-- The diagonal entries are $2,\ 4,\ 8$, that is, $2^n$.
-- The top-right entries are $1,\ 4,\ 12$, that is, $n\cdot2^{n-1}$.
+### Method
 
-This suggests the general formula (observed from the pattern, not proved here):
+The identity matrix $I$ is neutral for multiplication ($AI=IA=A$), and the zero matrix $0$ is neutral for addition ($A+0=A$).
 
-$$
-A^n=\begin{pmatrix} 2^n & n\cdot2^{n-1} \cr 0 & 2^n \end{pmatrix}
-$$
-
-Check: for $n=3$ we get $2^3=8$ and $3\cdot2^2=12$, which matches $A^3$.
-
-**Answers:**
+Observed pattern: the diagonal entries are $2,4,8$, that is $2^n$, and the upper right entries are $1,4,12$, that is $n\cdot2^{n-1}$. Hence
 
 $$
-AI=A,\qquad IA=A,\qquad A+0=A,\qquad A^2=\begin{pmatrix} 4 & 4 \cr 0 & 4 \end{pmatrix},\qquad A^3=\begin{pmatrix} 8 & 12 \cr 0 & 8 \end{pmatrix}
+A^n=
+\begin{pmatrix}
+2^n & n\cdot2^{n-1} \\
+0 & 2^n \\
+\end{pmatrix}.
+$$
+
+The pattern follows from the decomposition $A=2I+N$ with
+
+$$
+N=
+\begin{pmatrix}
+0 & 1 \\
+0 & 0 \\
+\end{pmatrix},\qquad N^2=0.
+$$
+
+Since $I$ commutes with $N$, the binomial formula gives $A^n=2^nI+n\cdot2^{n-1}N$.
+
+### Verification
+
+The formula reproduces the computed powers: for $n=2$ it gives $2^2=4$ and $2\cdot2=4$, and for $n=3$ it gives $2^3=8$ and $3\cdot4=12$. Computing $A^3=AA^2$ in the other order gives the same matrix:
+
+$$
+\begin{aligned}
+AA^2 &=
+\begin{pmatrix}
+2\cdot4+1\cdot0 & 2\cdot4+1\cdot4 \\
+0\cdot4+2\cdot0 & 0\cdot4+2\cdot4 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+8 & 12 \\
+0 & 8 \\
+\end{pmatrix}.
+\end{aligned}
 $$
