@@ -31,29 +31,33 @@ Explain why matrix addition is possible only for matrices of the same size.
 Addition, subtraction and scalar multiplication are performed entry by entry.
 
 $$
-A+B=
+\begin{aligned}
+A+B &=
 \begin{pmatrix}
 1+4 & 2+(-2) \\
 -1+0 & 3+5 \\
-\end{pmatrix}
-=
+\end{pmatrix} \\
+&=
 \begin{pmatrix}
 5 & 0 \\
 -1 & 8 \\
 \end{pmatrix}
+\end{aligned}
 $$
 
 $$
-A-B=
+\begin{aligned}
+A-B &=
 \begin{pmatrix}
 1-4 & 2-(-2) \\
 -1-0 & 3-5 \\
-\end{pmatrix}
-=
+\end{pmatrix} \\
+&=
 \begin{pmatrix}
 -3 & 4 \\
 -1 & -2 \\
 \end{pmatrix}
+\end{aligned}
 $$
 
 $$
@@ -70,16 +74,18 @@ $$
 $$
 
 $$
-3A-2B=
+\begin{aligned}
+3A-2B &=
 \begin{pmatrix}
 3-8 & 6-(-4) \\
 -3-0 & 9-10 \\
-\end{pmatrix}
-=
+\end{pmatrix} \\
+&=
 \begin{pmatrix}
 -5 & 10 \\
 -3 & -1 \\
 \end{pmatrix}
+\end{aligned}
 $$
 
 ### Result
@@ -111,18 +117,21 @@ The entry in position $(i,j)$ of $A+B$ is defined as $a_{ij}+b_{ij}$. This requi
 The sum of the two results should be $2A$:
 
 $$
-(A+B)+(A-B)=
+\begin{aligned}
+(A+B)+(A-B) &=
 \begin{pmatrix}
 2 & 4 \\
 -2 & 6 \\
-\end{pmatrix}
-=2A.
+\end{pmatrix} \\
+&= 2A.
+\end{aligned}
 $$
 
 The identity $3A-2B=3(A-B)+B$ gives the same result:
 
 $$
-3(A-B)+B=
+\begin{aligned}
+3(A-B)+B &=
 \begin{pmatrix}
 -9 & 12 \\
 -3 & -6 \\
@@ -131,10 +140,11 @@ $$
 \begin{pmatrix}
 4 & -2 \\
 0 & 5 \\
-\end{pmatrix}
-=
+\end{pmatrix} \\
+&=
 \begin{pmatrix}
 -5 & 10 \\
 -3 & -1 \\
 \end{pmatrix}.
+\end{aligned}
 $$
