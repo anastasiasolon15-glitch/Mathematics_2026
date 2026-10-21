@@ -1,45 +1,114 @@
-### Exercise 10. Solution
+# Exercise 10. Columns of a Matrix Product
+
+## Question
+
+Given
+
+$$
+A=
+\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 1 & 1 \\
+\end{pmatrix},\qquad B=
+\begin{pmatrix}
+1 & 2 \\
+-1 & 0 \\
+3 & 1 \\
+\end{pmatrix}.
+$$
+
+Denote the columns of $B$ by $b_1,b_2$.
+
+1. Compute $Ab_1$ and $Ab_2$.
+2. Compute the matrix $AB$.
+3. Compare the results and explain why the columns of $AB$ are exactly the vectors $Ab_1$ and $Ab_2$.
+
+## Solution
+
+### Steps
 
 The columns of $B$ are
 
 $$
-b_1=\begin{pmatrix} 1 \cr -1 \cr 3 \end{pmatrix},\qquad b_2=\begin{pmatrix} 2 \cr 0 \cr 1 \end{pmatrix}
+b_1=
+\begin{pmatrix}
+1 \\
+-1 \\
+3 \\
+\end{pmatrix},\qquad
+b_2=
+\begin{pmatrix}
+2 \\
+0 \\
+1 \\
+\end{pmatrix}.
 $$
 
-$A$ is $2\times3$ and each $b_j$ is $3\times1$, so $Ab_1$ and $Ab_2$ are defined and have size $2\times1$.
-
-**1. Products $Ab_1$ and $Ab_2$**
+Matrix-vector products:
 
 $$
-Ab_1=\begin{pmatrix} 1 & 2 & 0 \cr 0 & 1 & 1 \end{pmatrix}\begin{pmatrix} 1 \cr -1 \cr 3 \end{pmatrix}=\begin{pmatrix} 1\cdot1+2\cdot(-1)+0\cdot3 \cr 0\cdot1+1\cdot(-1)+1\cdot3 \end{pmatrix}=\begin{pmatrix} -1 \cr 2 \end{pmatrix}
+\begin{aligned}
+Ab_1 &=
+\begin{pmatrix}
+1\cdot1+2\cdot(-1)+0\cdot3 \\
+0\cdot1+1\cdot(-1)+1\cdot3 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+-1 \\
+2 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
 $$
-Ab_2=\begin{pmatrix} 1 & 2 & 0 \cr 0 & 1 & 1 \end{pmatrix}\begin{pmatrix} 2 \cr 0 \cr 1 \end{pmatrix}=\begin{pmatrix} 1\cdot2+2\cdot0+0\cdot1 \cr 0\cdot2+1\cdot0+1\cdot1 \end{pmatrix}=\begin{pmatrix} 2 \cr 1 \end{pmatrix}
+\begin{aligned}
+Ab_2 &=
+\begin{pmatrix}
+1\cdot2+2\cdot0+0\cdot1 \\
+0\cdot2+1\cdot0+1\cdot1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
-**2. Product $AB$**
-
-$A$ is $2\times3$ and $B$ is $3\times2$, so $AB$ is defined and has size $2\times2$.
+Full product, with rows of $A$ times columns of $B$:
 
 $$
-AB=\begin{pmatrix} 1 & 2 & 0 \cr 0 & 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 2 \cr -1 & 0 \cr 3 & 1 \end{pmatrix}=\begin{pmatrix} 1\cdot1+2\cdot(-1)+0\cdot3 & 1\cdot2+2\cdot0+0\cdot1 \cr 0\cdot1+1\cdot(-1)+1\cdot3 & 0\cdot2+1\cdot0+1\cdot1 \end{pmatrix}=\begin{pmatrix} -1 & 2 \cr 2 & 1 \end{pmatrix}
+\begin{aligned}
+AB &=
+\begin{pmatrix}
+1-2+0 & 2+0+0 \\
+0-1+3 & 0+0+1 \\
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+-1 & 2 \\
+2 & 1 \\
+\end{pmatrix}
+\end{aligned}
 $$
 
-**3. Comparison and explanation**
-
-The first column of $AB$ is $\begin{pmatrix} -1 \cr 2 \end{pmatrix}=Ab_1$, and the second column is $\begin{pmatrix} 2 \cr 1 \end{pmatrix}=Ab_2$. So
+### Result
 
 $$
-AB=\begin{pmatrix} Ab_1 & Ab_2 \end{pmatrix}
+AB=
+\begin{pmatrix}
+-1 & 2 \\
+2 & 1 \\
+\end{pmatrix},
 $$
 
-**Why this is true.** The entry in row $i$, column $j$ of $AB$ is (row $i$ of $A$) multiplied by (column $j$ of $B$). Column $j$ of $B$ is $b_j$, so the whole column $j$ of $AB$ is made of the entries (row $i$ of $A$)$\cdot b_j$ for $i=1,2$. But these are exactly the entries of the vector $Ab_j$. Therefore column $j$ of $AB$ equals $Ab_j$.
+and its columns are $Ab_1=(-1,2)$ and $Ab_2=(2,1)$.
 
-In other words, $A$ acts on each column of $B$ separately, and the results are placed side by side as the columns of $AB$.
+### Method
 
-**Answers:**
+Entry $(i,j)$ of $AB$ is the dot product of row $i$ of $A$ with column $j$ of $B$. Collecting these entries for fixed $j$ over all $i$ gives exactly the vector $Ab_j$, the dot products of all rows of $A$ with the single vector $b_j$. Therefore column $j$ of $AB$ equals $Ab_j$. In other words, the matrix $A$ is applied to each column of $B$ separately.
 
-$$
-Ab_1=\begin{pmatrix} -1 \cr 2 \end{pmatrix},\qquad Ab_2=\begin{pmatrix} 2 \cr 1 \end{pmatrix},\qquad AB=\begin{pmatrix} -1 & 2 \cr 2 & 1 \end{pmatrix}
-$$
+### Verification
+
+The first column of $AB$ is $(-1,2)$ and equals $Ab_1$. The second column is $(2,1)$ and equals $Ab_2$. Both ways of computing agree.
