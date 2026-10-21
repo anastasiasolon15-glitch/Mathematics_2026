@@ -27,7 +27,7 @@ $$
 
 ### Steps
 
-The transpose swaps rows and columns: $(A^T)_{ij} = a_{ji}$.
+To find the transpose, we swap the rows and columns of the matrix.
 
 $$
 A^T=
@@ -89,7 +89,7 @@ $$
 
 ### Result
 
-$(AB)^T=B^TA^T$ holds in this example, with both sides equal to
+$(AB)^T=B^TA^T$ holds in this example, with both sides equal to[cite: 2]
 
 $$
 \begin{pmatrix}
