@@ -73,6 +73,7 @@ $$
 The product of the matrix with the integer matrix $22A^{-1}$ gives
 
 $$
+\begin{aligned}
 \begin{pmatrix}
 3 & -2 \\
 5 & 4 \\
@@ -81,14 +82,13 @@ $$
 4 & 2 \\
 -5 & 3 \\
 \end{pmatrix}
-=
+&=
 \begin{pmatrix}
 22 & 0 \\
 0 & 22 \\
-\end{pmatrix}
-=22I,
+\end{pmatrix} \\
+&= 22I,
+\end{aligned}
 $$
 
 so the inverse works. For the second matrix no inverse exists, in agreement with the zero determinant.
-
-Вправа 2
