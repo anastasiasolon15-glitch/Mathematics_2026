@@ -79,4 +79,32 @@ $$
 
 ## Explanation
 
-Matrices are added by adding entries in the same position. If the matrices had different sizes, some entries would have no partner in the other matrix, so the sum would not be defined. Check: $(A+B)+(A-B)=2A=\begin{pmatrix}2&4\\-2&6\end{pmatrix}$, and indeed $\begin{pmatrix}5&0\\-1&8\end{pmatrix}+\begin{pmatrix}-3&4\\-1&-2\end{pmatrix}=\begin{pmatrix}2&4\\-2&6\end{pmatrix}$.
+### Why matrices must be of the same size for addition
+Matrix addition is defined entry by entry (element-wise), meaning that corresponding entries in the same position are added together. If two matrices had different sizes, some entries would have no corresponding partner in the other matrix, making the sum undefined.
+
+### Verification Check
+We can check our results using the property $(A+B)+(A-B)=2A$:
+
+$$
+(A+B) + (A-B) = 
+\begin{pmatrix}
+5 & 0 \\
+-1 & 8 
+\end{pmatrix} + 
+\begin{pmatrix}
+-3 & 4 \\
+-1 & -2 
+\end{pmatrix} = 
+\begin{pmatrix}
+2 & 4 \\
+-2 & 6 
+\end{pmatrix}
+$$
+
+And for $2A$:
+
+$$
+2A = 2 \begin{pmatrix} 1 & 2 \\ -1 & 3 \end{pmatrix} = \begin{pmatrix} 2 & 4 \\ -2 & 6 \end{pmatrix}.
+$$
+
+Since both results match, the calculations are correct.
