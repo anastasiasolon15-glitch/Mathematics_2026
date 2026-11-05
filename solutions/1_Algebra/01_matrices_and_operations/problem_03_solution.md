@@ -1,4 +1,4 @@
-# Exercise 3. When Can Matrices Be Multiplied?
+# Matrices and Basic Operations — Exercise 3. When Can Matrices Be Multiplied?
 
 ## Question
 
@@ -18,29 +18,19 @@ determine whether they are defined. If so, state the size of the result. Justify
 
 ## Solution
 
-### Steps
+Rule: the product $XY$ with $X$ of size $m\times n$ and $Y$ of size $p\times q$ is defined if and only if $n=p$ (inner dimensions agree). The result has size $m\times q$.
 
-The product $XY$ of an $m\times n$ matrix $X$ and a $p\times q$ matrix $Y$ is defined if and only if $n=p$ (the number of columns of $X$ equals the number of rows of $Y$). The result then has size $m\times q$.
-
-| Product | Sizes | Condition | Defined | Size of result |
+| Product | Sizes | Inner dimensions | Defined? | Result size |
 |---|---|---|---|---|
-| $AB$ | $2\times3$, $3\times4$ | $3=3$ | yes | $2\times4$ |
-| $BA$ | $3\times4$, $2\times3$ | $4\neq2$ | no | none |
-| $BC$ | $3\times4$, $4\times2$ | $4=4$ | yes | $3\times2$ |
-| $CB$ | $4\times2$, $3\times4$ | $2\neq3$ | no | none |
-| $AC$ | $2\times3$, $4\times2$ | $3\neq4$ | no | none |
-| $CA$ | $4\times2$, $2\times3$ | $2=2$ | yes | $4\times3$ |
-| $AD$ | $2\times3$, $2\times2$ | $3\neq2$ | no | none |
-| $DA$ | $2\times2$, $2\times3$ | $2=2$ | yes | $2\times3$ |
+| $AB$ | $2\times3$ and $3\times4$ | $3=3$ | Yes | $2\times4$ |
+| $BA$ | $3\times4$ and $2\times3$ | $4\ne2$ | No | — |
+| $BC$ | $3\times4$ and $4\times2$ | $4=4$ | Yes | $3\times2$ |
+| $CB$ | $4\times2$ and $3\times4$ | $2\ne3$ | No | — |
+| $AC$ | $2\times3$ and $4\times2$ | $3\ne4$ | No | — |
+| $CA$ | $4\times2$ and $2\times3$ | $2=2$ | Yes | $4\times3$ |
+| $AD$ | $2\times3$ and $2\times2$ | $3\ne2$ | No | — |
+| $DA$ | $2\times2$ and $2\times3$ | $2=2$ | Yes | $2\times3$ |
 
-### Result
+## Explanation
 
-The products $AB$, $BC$, $CA$, $DA$ are defined, with sizes $2\times4$, $3\times2$, $4\times3$, $2\times3$ respectively. The products $BA$, $CB$, $AC$, $AD$ are not defined.
-
-### Method
-
-Each entry of $XY$ is a dot product of a row of $X$ with a column of $Y$. A dot product requires vectors of equal length, and the row length of $X$ is its number of columns, while the column length of $Y$ is its number of rows.
-
-### Verification
-
-The pair $AB$ is defined while $BA$ is not, which shows that the order of factors matters even for the existence of the product. Chains are consistent: $AB$ has size $2\times4$ and $C$ has size $4\times2$, so $(AB)C$ is defined with size $2\times2$. The same size follows from $A(BC)$, where $BC$ is $3\times2$ and $A$ is $2\times3$.
+Each entry of $XY$ is a row of $X$ multiplied by a column of $Y$, so the row length (the number of columns of $X$) must equal the column length (the number of rows of $Y$). Four of the eight products are defined: $AB$, $BC$, $CA$, $DA$. In several cases one order works and the reverse does not (for example $AB$ is defined but $BA$ is not), which already shows that matrix multiplication is not commutative.
