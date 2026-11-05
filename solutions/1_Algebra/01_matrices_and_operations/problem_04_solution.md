@@ -1,4 +1,4 @@
-# Exercise 4. Matrix Multiplication and Noncommutativity
+# Matrices and Basic Operations — Exercise 4. Matrix Multiplication and Noncommutativity
 
 ## Question
 
@@ -20,70 +20,60 @@ compute $AB$ and $BA$. Is $AB=BA$? Use this example to explain what noncommutati
 
 ## Solution
 
-### Steps
-
-Each entry of a product is the dot product of a row of the left factor with a column of the right factor.
-
-$$
-\begin{aligned}
-AB &=
-\begin{pmatrix}
-1\cdot2+2\cdot3 & 1\cdot0+2\cdot1 \\
-0\cdot2+1\cdot3 & 0\cdot0+1\cdot1 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-8 & 2 \\
-3 & 1 \\
-\end{pmatrix}
-\end{aligned}
-$$
-
-$$
-\begin{aligned}
-BA &=
-\begin{pmatrix}
-2\cdot1+0\cdot0 & 2\cdot2+0\cdot1 \\
-3\cdot1+1\cdot0 & 3\cdot2+1\cdot1 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-2 & 4 \\
-3 & 7 \\
-\end{pmatrix}
-\end{aligned}
-$$
-
-### Result
-
 $$
 AB=
 \begin{pmatrix}
+1\cdot2+2\cdot3 & 1\cdot0+2\cdot1 \\
+0\cdot2+1\cdot3 & 0\cdot0+1\cdot1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+2+6 & 0+2 \\
+0+3 & 0+1 \\
+\end{pmatrix}=
+\begin{pmatrix}
 8 & 2 \\
 3 & 1 \\
-\end{pmatrix},\qquad
+\end{pmatrix}.
+$$
+
+$$
 BA=
+\begin{pmatrix}
+2\cdot1+0\cdot0 & 2\cdot2+0\cdot1 \\
+3\cdot1+1\cdot0 & 3\cdot2+1\cdot1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+2+0 & 4+0 \\
+3+0 & 6+1 \\
+\end{pmatrix}=
 \begin{pmatrix}
 2 & 4 \\
 3 & 7 \\
-\end{pmatrix},\qquad
-AB\neq BA.
+\end{pmatrix}.
 $$
 
-### Method
-
-Both products are defined and have the same size, yet they differ. Noncommutativity means that in general $AB\neq BA$, so the order of factors cannot be swapped. One counterexample, such as this one, is enough to show that the property fails in general. (For some special pairs of matrices the equality does hold, see Exercise 11.)
-
-### Verification
-
-The entries in position $(1,1)$ already differ: $8\neq2$. The trace and the determinant of the two products agree, as they should for these invariants:
+Since 
 
 $$
-\mathrm{tr}(AB)=8+1=9=2+7=\mathrm{tr}(BA),
+\begin{pmatrix}
+8 & 2 \\
+3 & 1 
+\end{pmatrix}
+\neq
+\begin{pmatrix}
+2 & 4 \\
+3 & 7 
+\end{pmatrix},
 $$
 
-$$
-\det(AB)=8\cdot1-2\cdot3=2=2\cdot7-4\cdot3=\det(BA).
-$$
+we have $AB \neq BA$.
 
-Thus $AB$ and $BA$ are different matrices that share these invariants.
+## Explanation
+
+### What Noncommutativity Means
+Both products are defined and have the same size ($2 \times 2$), yet they yield different matrices. 
+
+Noncommutativity means that the order of the factors matters: in general, $AB \neq BA$. This contrasts sharply with ordinary numbers, where multiplication is commutative ($ab = ba$). 
+
+### Conclusion
+Finding even a single counterexample where $AB \neq BA$ is sufficient to prove that matrix multiplication is not commutative in general.
