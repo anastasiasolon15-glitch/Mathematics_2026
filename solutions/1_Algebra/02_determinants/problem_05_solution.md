@@ -1,91 +1,72 @@
-# Exercise 5. Matrix Times Vector
+# Determinants — Exercise 5. Row Operations
 
 ## Question
 
-Let
+For
 
 $$
 A=
 \begin{pmatrix}
-2 & -1 \\
-1 & 3 \\
-\end{pmatrix},\qquad x=
-\begin{pmatrix}
-4 \\
-2 \\
-\end{pmatrix}.
+1 & 2 & 3 \\
+2 & 1 & 0 \\
+-1 & 4 & 2 \\
+\end{pmatrix}
 $$
 
-Compute $Ax$. Then express $Ax$ as a linear combination of the columns of $A$, with coefficients coming from the vector $x$.
+find $\det A$ by simplifying the matrix with row operations. At each step, indicate whether and how the determinant changes.
 
 ## Solution
 
-### Steps
-
-Row by row (dot products):
+### Step 1. $R_2 \leftarrow R_2 - 2R_1$
 
 $$
-\begin{aligned}
-Ax &=
 \begin{pmatrix}
-2\cdot4+(-1)\cdot2 \\
-1\cdot4+3\cdot2 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-6 \\
-10 \\
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+-1 & 4 & 2 \\
 \end{pmatrix}
-\end{aligned}
 $$
 
-Column by column, with the entries of $x$ as coefficients:
+Adding a multiple of one row to another: the determinant **does not change**.
+
+### Step 2. $R_3 \leftarrow R_3 + R_1$
 
 $$
-\begin{aligned}
-Ax &= 4
 \begin{pmatrix}
-2 \\
-1 \\
-\end{pmatrix} \,+\, 2
-\begin{pmatrix}
--1 \\
-3 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-8 \\
-4 \\
-\end{pmatrix} \,+\,
-\begin{pmatrix}
--2 \\
-6 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-6 \\
-10 \\
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+0 & 6 & 5 \\
 \end{pmatrix}
-\end{aligned}
 $$
 
-### Result
+Again adding a multiple of one row to another: the determinant **does not change**.
+
+### Step 3. $R_3 \leftarrow R_3 + 2R_2$
 
 $$
-Ax=
 \begin{pmatrix}
-6 \\
-10 \\
+1 & 2 & 3 \\
+0 & -3 & -6 \\
+0 & 0 & -7 \\
 \end{pmatrix}
-=4a_1+2a_2,
 $$
 
-where $a_1,a_2$ are the columns of $A$.
+The determinant **does not change**.
 
-### Method
+### Step 4. Triangular matrix
 
-For a matrix with columns $a_1,\dots,a_n$ and a vector $x=(x_1,\dots,x_n)$ the product satisfies $Ax=x_1a_1+\dots+x_na_n$. Hence $Ax$ always lies in the set of linear combinations of the columns of $A$.
+The matrix is upper triangular, so the determinant is the product of the diagonal entries:
 
-### Verification
+$$
+\det A = 1\cdot(-3)\cdot(-7) = 21.
+$$
 
-Both methods, the row dot products and the combination of columns, give the same vector $(6,10)$.
+### Check by cofactor expansion along the first row
+
+$$
+\det A = 1\cdot(1\cdot2-0\cdot4) - 2\cdot(2\cdot2-0\cdot(-1)) + 3\cdot(2\cdot4-1\cdot(-1)) = 2 - 8 + 27 = 21.
+$$
+
+## Explanation of the result
+
+All three operations were of the type "add a multiple of one row to another", so the determinant stayed the same at every step and $\det A$ equals the determinant of the final triangular matrix, $21$. Since $\det A \neq 0$, the matrix $A$ is invertible.
