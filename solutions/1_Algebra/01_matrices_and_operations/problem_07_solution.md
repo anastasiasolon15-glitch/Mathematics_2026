@@ -1,4 +1,4 @@
-# Exercise 7. Identity Matrix, Zero Matrix, and Powers
+# Matrices and Basic Operations — Exercise 7. Identity Matrix, Zero Matrix, and Powers
 
 ## Question
 
@@ -22,87 +22,45 @@ Explain the roles of the matrices $I$ and $0$, and describe the pattern you obse
 
 ## Solution
 
-### Steps
-
-Here $I$ is the $2\times2$ identity matrix and $0$ is the $2\times2$ zero matrix.
+With $I=\begin{pmatrix}1&0\\0&1\end{pmatrix}$ and $0=\begin{pmatrix}0&0\\0&0\end{pmatrix}$:
 
 $$
-\begin{aligned}
-AI &=
+AI=IA=A+0=
 \begin{pmatrix}
 2 & 1 \\
 0 & 2 \\
-\end{pmatrix}
-\begin{pmatrix}
-1 & 0 \\
-0 & 1 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-2 & 1 \\
-0 & 2 \\
-\end{pmatrix}
-\end{aligned}
-$$
-
-Similarly $IA=A$ and $A+0=A$.
-
-Powers:
-
-$$
-\begin{aligned}
-A^2 &=
-\begin{pmatrix}
-2\cdot2+1\cdot0 & 2\cdot1+1\cdot2 \\
-0\cdot2+2\cdot0 & 0\cdot1+2\cdot2 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-4 & 4 \\
-0 & 4 \\
-\end{pmatrix}
-\end{aligned}
-$$
-
-$$
-\begin{aligned}
-A^3=A^2A &=
-\begin{pmatrix}
-4\cdot2+4\cdot0 & 4\cdot1+4\cdot2 \\
-0\cdot2+4\cdot0 & 0\cdot1+4\cdot2 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-8 & 12 \\
-0 & 8 \\
-\end{pmatrix}
-\end{aligned}
-$$
-
-### Result
-
-$$
-AI=IA=A,\qquad A+0=A,
+\end{pmatrix}.
 $$
 
 $$
 A^2=
 \begin{pmatrix}
+2\cdot2+1\cdot0 & 2\cdot1+1\cdot2 \\
+0\cdot2+2\cdot0 & 0\cdot1+2\cdot2 \\
+\end{pmatrix}=
+\begin{pmatrix}
 4 & 4 \\
 0 & 4 \\
-\end{pmatrix},\qquad
-A^3=
+\end{pmatrix}.
+$$
+
+$$
+A^3=A^2A=
+\begin{pmatrix}
+4\cdot2+4\cdot0 & 4\cdot1+4\cdot2 \\
+0 & 4\cdot2 \\
+\end{pmatrix}=
 \begin{pmatrix}
 8 & 12 \\
 0 & 8 \\
 \end{pmatrix}.
 $$
 
-### Method
+## Explanation
 
-The identity matrix $I$ is neutral for multiplication ($AI=IA=A$), and the zero matrix $0$ is neutral for addition ($A+0=A$).
+$I$ is the neutral element for multiplication ($AI=IA=A$), and $0$ is the neutral element for addition ($A+0=A$).
 
-Observed pattern: the diagonal entries are $2,4,8$, that is $2^n$, and the upper right entries are $1,4,12$, that is $n\cdot2^{n-1}$. Hence
+Pattern: the diagonal entries are $2,4,8$, that is $2^n$, and the upper right entries are $1,4,12$, that is $n\cdot2^{n-1}$. So
 
 $$
 A^n=
@@ -112,33 +70,4 @@ A^n=
 \end{pmatrix}.
 $$
 
-The pattern follows from the decomposition $A=2I+N$ with
-
-$$
-N=
-\begin{pmatrix}
-0 & 1 \\
-0 & 0 \\
-\end{pmatrix},\qquad N^2=0.
-$$
-
-Since $I$ commutes with $N$, the binomial formula gives $A^n=2^nI+n\cdot2^{n-1}N$.
-
-### Verification
-
-The formula reproduces the computed powers: for $n=2$ it gives $2^2=4$ and $2\cdot2=4$, and for $n=3$ it gives $2^3=8$ and $3\cdot4=12$. Computing $A^3=AA^2$ in the other order gives the same matrix:
-
-$$
-\begin{aligned}
-AA^2 &=
-\begin{pmatrix}
-2\cdot4+1\cdot0 & 2\cdot4+1\cdot4 \\
-0\cdot4+2\cdot0 & 0\cdot4+2\cdot4 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-8 & 12 \\
-0 & 8 \\
-\end{pmatrix}.
-\end{aligned}
-$$
+Check: for $n=2$ we get $2^2=4$ and $2\cdot2=4$; for $n=3$ we get $2^3=8$ and $3\cdot4=12$, matching the computed matrices.
