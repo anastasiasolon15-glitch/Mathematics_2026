@@ -1,4 +1,4 @@
-# Exercise 1. Matrix Size and Entries
+# Matrices and Basic Operations — Exercise 1. Matrix Size and Entries
 
 ## Question
 
@@ -23,43 +23,26 @@ $$
 
 ## Solution
 
-### Steps
+### 1. Sizes
 
-A matrix with $m$ rows and $n$ columns has size $m\times n$. The entry $a_{ij}$ lies in row $i$ and column $j$.
+$A$ has 2 rows and 3 columns, so $A$ is $2\times3$.
+$B$ has 3 rows and 2 columns, so $B$ is $3\times2$.
 
-- $A$ has 2 rows and 3 columns.
-- $B$ has 3 rows and 2 columns.
-- $a_{12}$ is in row 1, column 2 of $A$.
-- $a_{23}$ is in row 2, column 3 of $A$.
-- $b_{21}$ is in row 2, column 1 of $B$.
-- $b_{32}$ is in row 3, column 2 of $B$.
+### 2. Entries
 
-### Result
-
-Sizes: $A$ is $2\times3$, $B$ is $3\times2$.
-
-Entries:
+The entry $a_{ij}$ is in row $i$, column $j$.
 
 $$
 a_{12}=-1,\qquad a_{23}=5,\qquad b_{21}=-2,\qquad b_{32}=1.
 $$
 
-The second row of $A$ is the row vector $(0,\ 4,\ 5)$.
-
-The first column of $B$ is
+### 3. Row and column as vectors
 
 $$
-\begin{pmatrix}
-1 \\
--2 \\
-4 \\
-\end{pmatrix}.
+\text{row 2 of }A=\begin{pmatrix}0 & 4 & 5\end{pmatrix},\qquad
+\text{column 1 of }B=\begin{pmatrix}1\\-2\\4\end{pmatrix}.
 $$
 
-### Method
+## Explanation
 
-The first index always denotes the row and the second index the column. A row of a matrix is a row vector, a column is a column vector.
-
-### Verification
-
-The number of entries equals the product of the dimensions: $A$ has $2\cdot3=6$ entries and $B$ has $3\cdot2=6$ entries, which matches the displayed matrices. The second row of $A$ has 3 entries (the number of columns of $A$), and the first column of $B$ has 3 entries (the number of rows of $B$).
+The size is written as (number of rows) × (number of columns), and the first index of an entry is its row, the second is its column. Check: the second row of $A$ has 3 entries (as many as $A$ has columns), and the first column of $B$ has 3 entries (as many as $B$ has rows).
