@@ -1,4 +1,4 @@
-# Exercise 6. Transpose
+# Matrices and Basic Operations — Exercise 6. Transpose
 
 ## Question
 
@@ -25,9 +25,7 @@ $$
 
 ## Solution
 
-### Steps
-
-To find the transpose, we swap the rows and columns of the matrix.
+### Transposes
 
 $$
 A^T=
@@ -40,68 +38,45 @@ B^T=
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 1 & 3 \\
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
-The product $AB$ has size $2\times2$:
+### Product $AB$ ($2\times3$ times $3\times2$ gives $2\times2$)
 
 $$
-\begin{aligned}
-AB &=
+AB=
 \begin{pmatrix}
-1+4-3 & 0+2+9 \\
-4+10-6 & 0+5+18 \\
-\end{pmatrix} \\
-&=
+1\cdot1+2\cdot2+3\cdot(-1) & 1\cdot0+2\cdot1+3\cdot3 \\
+4\cdot1+5\cdot2+6\cdot(-1) & 4\cdot0+5\cdot1+6\cdot3 \\
+\end{pmatrix}=
 \begin{pmatrix}
 2 & 11 \\
 8 & 23 \\
-\end{pmatrix}
-\end{aligned}
+\end{pmatrix}.
 $$
 
-Left side of the identity:
+### Verification
 
 $$
 (AB)^T=
 \begin{pmatrix}
 2 & 8 \\
 11 & 23 \\
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
-Right side of the identity:
-
 $$
-\begin{aligned}
-B^TA^T &=
+B^TA^T=
 \begin{pmatrix}
-1+4-3 & 4+10-6 \\
-0+2+9 & 0+5+18 \\
-\end{pmatrix} \\
-&=
-\begin{pmatrix}
-2 & 8 \\
-11 & 23 \\
-\end{pmatrix}
-\end{aligned}
-$$
-
-### Result
-
-$(AB)^T=B^TA^T$ holds in this example, with both sides equal to[cite: 2]
-
-$$
+1\cdot1+2\cdot2+(-1)\cdot3 & 1\cdot4+2\cdot5+(-1)\cdot6 \\
+0\cdot1+1\cdot2+3\cdot3 & 0\cdot4+1\cdot5+3\cdot6 \\
+\end{pmatrix}=
 \begin{pmatrix}
 2 & 8 \\
 11 & 23 \\
 \end{pmatrix}.
 $$
 
-### Method
+## Explanation
 
-The identity $(AB)^T=B^TA^T$ reverses the order of factors. The entry $(i,j)$ of $(AB)^T$ is the dot product of row $j$ of $A$ with column $i$ of $B$. This equals the dot product of row $i$ of $B^T$ with column $j$ of $A^T$, which is the entry $(i,j)$ of $B^TA^T$.
-
-### Verification
-
-The sizes are consistent: $B^T$ is $2\times3$ and $A^T$ is $3\times2$, so $B^TA^T$ is $2\times2$, the size of $(AB)^T$. The other order $A^TB^T$ is also defined, but it has size $3\times3$, which differs from the size of $(AB)^T$, so only the reversed order can match.
+The two matrices are equal, so $(AB)^T=B^TA^T$ holds in this example. The order of the factors is reversed: the product $A^TB^T$ would not even be defined here ($3\times2$ times $2\times3$ would give $3\times3$, which has the wrong size to equal $(AB)^T$).
