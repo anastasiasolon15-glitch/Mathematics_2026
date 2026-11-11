@@ -1,5 +1,3 @@
-# Matrices and Basic Operations — Exercise 7. Identity Matrix, Zero Matrix, and Powers
-
 ## Question
 
 For
@@ -22,52 +20,59 @@ Explain the roles of the matrices $I$ and $0$, and describe the pattern you obse
 
 ## Solution
 
-With $I=\begin{pmatrix}1&0\\0&1\end{pmatrix}$ and $0=\begin{pmatrix}0&0\\0&0\end{pmatrix}$:
+### Neutral elements
+
+Here $I$ is the $2\times2$ identity matrix and $0$ is the $2\times2$ zero matrix. Multiplying by $I$ changes nothing, and adding $0$ changes nothing:
 
 $$
-AI=IA=A+0=
+AI=IA=A=
 \begin{pmatrix}
 2 & 1 \\
-0 & 2 \\
-\end{pmatrix}.
+0 & 2
+\end{pmatrix},\qquad
+A+0=A.
 $$
 
+So $I$ is the neutral element for multiplication and $0$ is the neutral element for addition.
+
+### Powers
+
 $$
-A^2=
+A^2=A\cdot A=
 \begin{pmatrix}
-2\cdot2+1\cdot0 & 2\cdot1+1\cdot2 \\
-0\cdot2+2\cdot0 & 0\cdot1+2\cdot2 \\
-\end{pmatrix}=
+4 & 2+2 \\
+0 & 4
+\end{pmatrix}
+=
 \begin{pmatrix}
 4 & 4 \\
-0 & 4 \\
-\end{pmatrix}.
+0 & 4
+\end{pmatrix},
 $$
 
 $$
-A^3=A^2A=
+A^3=A^2\cdot A=
 \begin{pmatrix}
-4\cdot2+4\cdot0 & 4\cdot1+4\cdot2 \\
-0 & 4\cdot2 \\
-\end{pmatrix}=
+8 & 4+8 \\
+0 & 8
+\end{pmatrix}
+=
 \begin{pmatrix}
 8 & 12 \\
-0 & 8 \\
+0 & 8
 \end{pmatrix}.
 $$
 
-## Explanation
+### Pattern
 
-$I$ is the neutral element for multiplication ($AI=IA=A$), and $0$ is the neutral element for addition ($A+0=A$).
-
-Pattern: the diagonal entries are $2,4,8$, that is $2^n$, and the upper right entries are $1,4,12$, that is $n\cdot2^{n-1}$. So
+The diagonal entries are $2,\,4,\,8$, that is $2^n$. The upper-right entries are $1,\,4,\,12$, that is $n\cdot2^{n-1}$. This suggests
 
 $$
 A^n=
 \begin{pmatrix}
-2^n & n\cdot2^{n-1} \\
-0 & 2^n \\
-\end{pmatrix}.
+2^n & n\,2^{n-1} \\
+0 & 2^n
+\end{pmatrix},
 $$
 
-Check: for $n=2$ we get $2^2=4$ and $2\cdot2=4$; for $n=3$ we get $2^3=8$ and $3\cdot4=12$, matching the computed matrices.
+which matches $n=1,2,3$.
