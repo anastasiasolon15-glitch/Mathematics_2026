@@ -1,5 +1,3 @@
-# Matrices and Basic Operations — Exercise 1. Matrix Size and Entries
-
 ## Question
 
 Given
@@ -25,12 +23,11 @@ $$
 
 ### 1. Sizes
 
-$A$ has 2 rows and 3 columns, so $A$ is $2\times3$.
-$B$ has 3 rows and 2 columns, so $B$ is $3\times2$.
+A matrix of size $m \times n$ has $m$ rows and $n$ columns. $A$ has 2 rows and 3 columns, so $A$ is $2\times3$. $B$ has 3 rows and 2 columns, so $B$ is $3\times2$.
 
 ### 2. Entries
 
-The entry $a_{ij}$ is in row $i$, column $j$.
+The entry $a_{ij}$ is the element in row $i$ and column $j$:
 
 $$
 a_{12}=-1,\qquad a_{23}=5,\qquad b_{21}=-2,\qquad b_{32}=1.
@@ -38,11 +35,24 @@ $$
 
 ### 3. Row and column as vectors
 
+The second row of $A$ is
+
 $$
-\text{row 2 of }A=\begin{pmatrix}0 & 4 & 5\end{pmatrix},\qquad
-\text{column 1 of }B=\begin{pmatrix}1\\-2\\4\end{pmatrix}.
+\begin{pmatrix}
+0 & 4 & 5
+\end{pmatrix}.
 $$
 
-## Explanation
+The first column of $B$ is
 
-The size is written as (number of rows) × (number of columns), and the first index of an entry is its row, the second is its column. Check: the second row of $A$ has 3 entries (as many as $A$ has columns), and the first column of $B$ has 3 entries (as many as $B$ has rows).
+$$
+\begin{pmatrix}
+1 \\
+-2 \\
+4
+\end{pmatrix}.
+$$
+
+### Explanation
+
+Row and column indices identify entries, and any row or column can be written as a vector.
