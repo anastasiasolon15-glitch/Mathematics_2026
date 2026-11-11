@@ -1,5 +1,3 @@
-# Determinants — Exercise 2. Determinant of a 3×3 Matrix
-
 ## Question
 
 For
@@ -17,43 +15,53 @@ compute $\det A$ using Sarrus' rule. Then perform one simple check using a chose
 
 ## Solution
 
-### Step 1. Sarrus' rule
+### Sarrus' rule
 
-Sum of products along the "down-right" diagonals:
-
-$$
-1\cdot3\cdot5 + 2\cdot4\cdot2 + (-1)\cdot0\cdot1 = 15 + 16 + 0 = 31.
-$$
-
-Sum of products along the "up-right" diagonals:
+For a $3\times3$ matrix, Sarrus' rule adds the products along the three "main" diagonals and subtracts the products along the three "anti-diagonals":
 
 $$
-(-1)\cdot3\cdot2 + 1\cdot4\cdot1 + 2\cdot0\cdot5 = -6 + 4 + 0 = -2.
+\det A = a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}.
 $$
+
+Positive terms:
+
+$$
+1\cdot3\cdot5=15,\qquad 2\cdot4\cdot2=16,\qquad (-1)\cdot0\cdot1=0,
+$$
+
+which sum to $31$.
+
+Negative terms:
+
+$$
+(-1)\cdot3\cdot2=-6,\qquad 1\cdot4\cdot1=4,\qquad 2\cdot0\cdot5=0,
+$$
+
+which sum to $-2$.
 
 Therefore
 
 $$
-\det A = 31 - (-2) = 33.
+\det A = 31-(-2)=33.
 $$
 
-### Step 2. Check using a determinant property
+### Check using a determinant property
 
-Adding a multiple of one row to another row does not change the determinant. Apply
+Adding a multiple of one row to another row does not change the determinant. We use this to create zeros below the first pivot and then below the second pivot.
+
+First, $R_3\leftarrow R_3-2R_1$:
 
 $$
-R_3 \leftarrow R_3 - 2R_1:\quad
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 3 & 4 \\
 0 & -3 & 7 \\
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
-and then
+Next, $R_3\leftarrow R_3+R_2$:
 
 $$
-R_3 \leftarrow R_3 + R_2:\quad
 \begin{pmatrix}
 1 & 2 & -1 \\
 0 & 3 & 4 \\
@@ -61,12 +69,18 @@ R_3 \leftarrow R_3 + R_2:\quad
 \end{pmatrix}.
 $$
 
-The matrix is upper triangular, so its determinant is the product of the diagonal entries:
+Both operations leave the determinant unchanged, and the resulting matrix is upper triangular. The determinant of a triangular matrix is the product of its diagonal entries:
 
 $$
-1\cdot3\cdot11 = 33.
+\det A = 1\cdot3\cdot11=33.
 $$
 
-## Explanation of the result
+This agrees with the result from Sarrus' rule.
 
-Both methods give $\det A = 33$. Both row operations used were of the type "add a multiple of one row to another", which does not change the determinant, so the two values must agree. Since $\det A = 33 \neq 0$, the matrix $A$ is invertible.
+### Answer
+
+$$
+\det A = 33.
+$$
+
+Since $\det A\neq0$, the matrix $A$ is invertible.
