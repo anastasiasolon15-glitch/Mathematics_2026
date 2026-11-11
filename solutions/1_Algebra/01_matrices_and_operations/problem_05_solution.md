@@ -1,53 +1,76 @@
-# Matrices and Basic Operations — Exercise 5. Matrix Times Vector
-
 ## Question
 
-Let
+For
 
 $$
 A=
 \begin{pmatrix}
-2 & -1 \\
-1 & 3 \\
-\end{pmatrix},\qquad x=
-\begin{pmatrix}
-4 \\
-2 \\
-\end{pmatrix}.
+2 & 1 \\
+0 & 2 \\
+\end{pmatrix}
 $$
 
-Compute $Ax$. Then express $Ax$ as a linear combination of the columns of $A$, with coefficients coming from the vector $x$.
+compute
+
+$$
+AI,\qquad IA,\qquad A+0,\qquad A^2,\qquad A^3.
+$$
+
+Explain the roles of the matrices $I$ and $0$, and describe the pattern you observe in successive powers of $A$.
 
 ## Solution
 
-### Direct computation
+### Neutral elements
+
+Here $I$ is the $2\times2$ identity matrix and $0$ is the $2\times2$ zero matrix. Multiplying by $I$ changes nothing, and adding $0$ changes nothing:
 
 $$
-Ax=
+AI=IA=A=
 \begin{pmatrix}
-2\cdot4+(-1)\cdot2 \\
-1\cdot4+3\cdot2 \\
+2 & 1 \\
+0 & 2
+\end{pmatrix},\qquad
+A+0=A.
+$$
+
+So $I$ is the neutral element for multiplication and $0$ is the neutral element for addition.
+
+### Powers
+
+$$
+A^2=A\cdot A=
+\begin{pmatrix}
+4 & 2+2 \\
+0 & 4
 \end{pmatrix}=
 \begin{pmatrix}
-8-2 \\
-4+6 \\
+4 & 4 \\
+0 & 4
+\end{pmatrix},
+$$
+
+$$
+A^3=A^2\cdot A=
+\begin{pmatrix}
+8 & 4+8 \\
+0 & 8
 \end{pmatrix}=
 \begin{pmatrix}
-6 \\
-10 \\
+8 & 12 \\
+0 & 8
 \end{pmatrix}.
 $$
 
-### Linear combination of columns
+### Pattern
 
-The columns of $A$ are $a_1=\begin{pmatrix}2\\1\end{pmatrix}$ and $a_2=\begin{pmatrix}-1\\3\end{pmatrix}$. The coefficients are the entries of $x$:
+The diagonal entries are 2, 4, 8, that is $2^n$. The upper-right entries are 1, 4, 12, that is $n\cdot 2^{n-1}$. This suggests
 
 $$
-Ax = 4\begin{pmatrix} 2 \\ 1 \end{pmatrix} + 2\begin{pmatrix} -1 \\ 3 \end{pmatrix} =
-\begin{pmatrix} 8 \\ 4 \end{pmatrix} + \begin{pmatrix} -2 \\ 6 \end{pmatrix} =
-\begin{pmatrix} 6 \\ 10 \end{pmatrix}.
+A^n=
+\begin{pmatrix}
+2^n & n\cdot 2^{n-1} \\
+0 & 2^n
+\end{pmatrix},
 $$
 
-## Explanation
-
-In general, $Ax = x_1a_1 + x_2a_2$: the vector $Ax$ is a linear combination of the columns of $A$ with weights given by the entries of $x$. Both methods yield the exact same vector $\begin{pmatrix} 6 \\ 10 \end{pmatrix}$, which verifies the correctness of the result.
+which matches $n=1,2,3$.
