@@ -1,5 +1,3 @@
-# Determinants — Exercise 5. Row Operations
-
 ## Question
 
 For
@@ -17,7 +15,13 @@ find $\det A$ by simplifying the matrix with row operations. At each step, indic
 
 ## Solution
 
-### Step 1. $R_2 \leftarrow R_2 - 2R_1$
+### Method
+
+We reduce $A$ to an upper triangular matrix, whose determinant is the product of its diagonal entries. We use only operations of the type "add a multiple of one row to another row". These operations do not change the determinant, so no correction factor is needed.
+
+### Step 1: $R_2\leftarrow R_2-2R_1$
+
+This eliminates the entry below the first pivot in row 2. The determinant does **not** change.
 
 $$
 \begin{pmatrix}
@@ -27,9 +31,9 @@ $$
 \end{pmatrix}
 $$
 
-Adding a multiple of one row to another: the determinant **does not change**.
+### Step 2: $R_3\leftarrow R_3+R_1$
 
-### Step 2. $R_3 \leftarrow R_3 + R_1$
+This eliminates the entry below the first pivot in row 3. The determinant does **not** change.
 
 $$
 \begin{pmatrix}
@@ -39,9 +43,9 @@ $$
 \end{pmatrix}
 $$
 
-Again adding a multiple of one row to another: the determinant **does not change**.
+### Step 3: $R_3\leftarrow R_3+2R_2$
 
-### Step 3. $R_3 \leftarrow R_3 + 2R_2$
+This eliminates the entry below the second pivot. The determinant does **not** change.
 
 $$
 \begin{pmatrix}
@@ -51,22 +55,24 @@ $$
 \end{pmatrix}
 $$
 
-The determinant **does not change**.
+### Computing the determinant
 
-### Step 4. Triangular matrix
-
-The matrix is upper triangular, so the determinant is the product of the diagonal entries:
+The final matrix is upper triangular, and all three operations preserved the determinant. Hence
 
 $$
-\det A = 1\cdot(-3)\cdot(-7) = 21.
+\det A = 1\cdot(-3)\cdot(-7)=21.
 $$
 
-### Check by cofactor expansion along the first row
+### Check
+
+Sarrus' rule gives
 
 $$
-\det A = 1\cdot(1\cdot2-0\cdot4) - 2\cdot(2\cdot2-0\cdot(-1)) + 3\cdot(2\cdot4-1\cdot(-1)) = 2 - 8 + 27 = 21.
+\det A=(1\cdot1\cdot2+2\cdot0\cdot(-1)+3\cdot2\cdot4)-(3\cdot1\cdot(-1)+1\cdot0\cdot4+2\cdot2\cdot2)=26-5=21.
 $$
 
-## Explanation of the result
+### Answer
 
-All three operations were of the type "add a multiple of one row to another", so the determinant stayed the same at every step and $\det A$ equals the determinant of the final triangular matrix, $21$. Since $\det A \neq 0$, the matrix $A$ is invertible.
+$$
+\det A = 21.
+$$
