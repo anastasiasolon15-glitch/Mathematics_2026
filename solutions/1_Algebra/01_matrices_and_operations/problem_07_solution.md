@@ -42,8 +42,7 @@ A^2=A\cdot A=
 \begin{pmatrix}
 4 & 2+2 \\
 0 & 4
-\end{pmatrix}
-=
+\end{pmatrix}=
 \begin{pmatrix}
 4 & 4 \\
 0 & 4
@@ -55,8 +54,7 @@ A^3=A^2\cdot A=
 \begin{pmatrix}
 8 & 4+8 \\
 0 & 8
-\end{pmatrix}
-=
+\end{pmatrix}=
 \begin{pmatrix}
 8 & 12 \\
 0 & 8
@@ -65,12 +63,12 @@ $$
 
 ### Pattern
 
-The diagonal entries are $2,\,4,\,8$, that is $2^n$. The upper-right entries are $1,\,4,\,12$, that is $n\cdot2^{n-1}$. This suggests
+The diagonal entries are 2, 4, 8, that is $2^n$. The upper-right entries are 1, 4, 12, that is $n\cdot 2^{n-1}$. This suggests
 
 $$
 A^n=
 \begin{pmatrix}
-2^n & n\,2^{n-1} \\
+2^n & n\cdot 2^{n-1} \\
 0 & 2^n
 \end{pmatrix},
 $$
