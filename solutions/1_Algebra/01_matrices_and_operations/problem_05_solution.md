@@ -1,76 +1,85 @@
+### Exercise 5. Matrix Times Vector
+
 ## Question
 
-For
+Let
 
 $$
 A=
 \begin{pmatrix}
-2 & 1 \\
-0 & 2 \\
-\end{pmatrix}
-$$
-
-compute
-
-$$
-AI,\qquad IA,\qquad A+0,\qquad A^2,\qquad A^3.
-$$
-
-Explain the roles of the matrices $I$ and $0$, and describe the pattern you observe in successive powers of $A$.
-
-## Solution
-
-### Neutral elements
-
-Here $I$ is the $2\times2$ identity matrix and $0$ is the $2\times2$ zero matrix. Multiplying by $I$ changes nothing, and adding $0$ changes nothing:
-
-$$
-AI=IA=A=
+2 & -1 \\
+1 & 3
+\end{pmatrix},\qquad x=
 \begin{pmatrix}
-2 & 1 \\
-0 & 2
-\end{pmatrix},\qquad
-A+0=A.
-$$
-
-So $I$ is the neutral element for multiplication and $0$ is the neutral element for addition.
-
-### Powers
-
-$$
-A^2=A\cdot A=
-\begin{pmatrix}
-4 & 2+2 \\
-0 & 4
-\end{pmatrix}=
-\begin{pmatrix}
-4 & 4 \\
-0 & 4
-\end{pmatrix},
-$$
-
-$$
-A^3=A^2\cdot A=
-\begin{pmatrix}
-8 & 4+8 \\
-0 & 8
-\end{pmatrix}=
-\begin{pmatrix}
-8 & 12 \\
-0 & 8
+4 \\
+2
 \end{pmatrix}.
 $$
 
-### Pattern
+1. Compute $Ax$.
+2. Express $Ax$ as a linear combination of the columns of $A$, with coefficients coming from the entries of the vector $x$.
 
-The diagonal entries are 2, 4, 8, that is $2^n$. The upper-right entries are 1, 4, 12, that is $n\cdot 2^{n-1}$. This suggests
+## Solution
+
+**Step 1: computing $Ax$.** The matrix $A$ has size $2\times 2$ and $x$ has size $2\times 1$, so the product is defined and is a $2\times 1$ vector. Each entry of $Ax$ is the dot product of a row of $A$ with $x$:
 
 $$
-A^n=
+Ax=
 \begin{pmatrix}
-2^n & n\cdot 2^{n-1} \\
-0 & 2^n
-\end{pmatrix},
+2\cdot 4+(-1)\cdot 2 \\
+1\cdot 4+3\cdot 2
+\end{pmatrix}=
+\begin{pmatrix}
+8-2 \\
+4+6
+\end{pmatrix}=
+\begin{pmatrix}
+6 \\
+10
+\end{pmatrix}.
 $$
 
-which matches $n=1,2,3$.
+**Step 2: linear combination of columns.** Denote the columns of $A$ by
+
+$$
+a_1=
+\begin{pmatrix}
+2 \\
+1
+\end{pmatrix},\qquad a_2=
+\begin{pmatrix}
+-1 \\
+3
+\end{pmatrix}.
+$$
+
+For $x=(x_1,x_2)^T$ we have $Ax=x_1a_1+x_2a_2$: the first entry of $x$ multiplies the first column, and the second entry multiplies the second column. Here $x_1=4$ and $x_2=2$, so
+
+$$
+Ax=4
+\begin{pmatrix}
+2 \\
+1
+\end{pmatrix}+
+2
+\begin{pmatrix}
+-1 \\
+3
+\end{pmatrix}=
+\begin{pmatrix}
+8 \\
+4
+\end{pmatrix}+
+\begin{pmatrix}
+-2 \\
+6
+\end{pmatrix}=
+\begin{pmatrix}
+6 \\
+10
+\end{pmatrix}.
+$$
+
+**Verification.** Both methods give the same vector $(6,10)^T$. The row-wise computation and the column-wise computation are two views of the same operation, which is why the results agree.
+
+**Conclusion.** Multiplying a matrix by a vector produces a linear combination of the columns of the matrix, with the entries of the vector as coefficients. Here, $Ax=4a_1+2a_2=(6,10)^T$.
